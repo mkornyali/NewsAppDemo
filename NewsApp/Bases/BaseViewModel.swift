@@ -7,3 +7,20 @@
 //
 
 import Foundation
+class BaseViewModel<T: Codable>: ViewModelProtocol  {
+    var apiProtocol: NewsRepoProtocol?
+    var observState: Observable<State?>?
+    var sharedRepo = NewsRepo.shared
+    
+    
+    init(_ apiManager : NewsRepoProtocol = NewsRepo()){
+           self.apiProtocol = apiManager
+           self.observState = Observable<State?>(.empty)
+          initFetchVM()
+       }
+    
+    func initFetchVM()   {
+        print("\(#file) initFetchVM")
+    }
+
+}

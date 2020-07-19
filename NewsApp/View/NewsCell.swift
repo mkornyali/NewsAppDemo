@@ -22,7 +22,7 @@ class NewsCell: UITableViewCell {
             titleLbl.text = newsCellViewModel?.title
             descriptionLbl.text = newsCellViewModel?.description
             sourceLbl.text = newsCellViewModel?.source
-            dateLbl.text = newsCellViewModel?.date
+            dateLbl.text = newsCellViewModel?.setupDate(publishAt: newsCellViewModel?.date)
             let resource = ImageResource(downloadURL: newsCellViewModel!.imageURL)
             newsImageView.kf.setImage(with: resource)
         }

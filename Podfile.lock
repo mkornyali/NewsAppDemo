@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.2.1)
+  - iOSDropDown (0.3.4)
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+
+DEPENDENCIES:
+  - iOSDropDown
+  - Kingfisher (~> 5.0)
+  - Moya
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - iOSDropDown
+    - Kingfisher
+    - Moya
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+
+PODFILE CHECKSUM: bd90a00171a4830cc9efd772577077c8f2291d75
+
+COCOAPODS: 1.9.0

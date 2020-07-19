@@ -16,12 +16,12 @@ struct Result : Codable {
 
 // MARK: - Article
 struct News: Codable {
-    let source: Source?
+    let source: SourceNews?
     let author: String?
     let title, articleDescription: String?
     let url: String?
     let urlToImage: String?
-    let publishedAt: String?
+    var publishedAt: String?
     let content: String?
 
     enum CodingKeys: String, CodingKey {
@@ -32,7 +32,7 @@ struct News: Codable {
 }
 
 // MARK: - Source
-struct Source: Codable {
+struct SourceNews: Codable {
     let id: String?
     let name: String?
 }

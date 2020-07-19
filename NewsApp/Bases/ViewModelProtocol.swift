@@ -7,19 +7,23 @@
 //
 
 import Foundation
+import Moya
 
-protocol BaseViewModelProtocol {
+protocol ViewModelProtocol : class {
     
    // associatedtype cellViewModel
     var observState : Observable<State?>? { get set }
     var apiProtocol : NewsRepoProtocol? { set get}
     
+    
 }
 
-extension BaseViewModelProtocol {
+extension ViewModelProtocol {
     
     func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? { return nil }
-    func userPressedCell(at indexPath : IndexPath){}
-    func initFetch(){}
+    func userPressedCell(at url: String, sender: Any){}
+    func initFetchVM(){
+        
+    }
 }
 

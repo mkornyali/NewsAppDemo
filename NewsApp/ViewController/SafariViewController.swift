@@ -7,24 +7,40 @@
 //
 
 import UIKit
-
-class SafariViewController: UIViewController {
-
+import WebKit
+class SafariViewController: UIViewController, WKNavigationDelegate  {
+    var newsURL:String!
+    let webView = WKWebView()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       
+        webView.frame = view.bounds
+        print("URL is .....\(newsURL.fixedArabicURL)")
+        webView.navigationDelegate = self
+        
+        let url = URL(string: newsURL!)
+        let urlRequest = URLRequest(url: (url ?? URL(string: "www.google.com"))!)
+        webView.load(urlRequest)
+        webView.allowsBackForwardNavigationGestures = true
+       // webView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        view.addSubview(webView)
+        //view = webView
+       // self.hideActivityIndicator()
+        
+        if webView.isLoading {
+             showActivityIndicator()
+        }
+      
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   func webView(_ webView: WKWebView, didFinish  navigation: WKNavigation!)
+    {
+       hideActivityIndicator()
     }
-    */
-
 }
+extension String {
+var fixedArabicURL: String?  {
+       return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics
+           .union(CharacterSet.urlPathAllowed)
+           .union(CharacterSet.urlHostAllowed))
+   } }

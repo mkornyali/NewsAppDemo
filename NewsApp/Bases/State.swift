@@ -11,7 +11,7 @@ import Foundation
 public enum State {
     
     case loading
-    case error
+    case error(error:String?)
     case empty
     case populated
     

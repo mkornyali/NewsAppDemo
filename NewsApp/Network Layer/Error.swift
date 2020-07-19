@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum APIError : String, Error {
+    case noInternet = "Please check internet connection"
+    case notFound = "No data found or page removed"
+}

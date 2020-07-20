@@ -10,7 +10,7 @@ import Foundation
 class BaseViewModel<T: Codable>: ViewModelProtocol  {
     var apiProtocol: NewsRepoProtocol?
     var observState: Observable<State?>?
-    var sharedRepo = NewsRepo.shared
+    var sharedRepo = NewsRepo.shared //FIXME: (3) Wrong way 
     
     
     init(_ apiManager : NewsRepoProtocol = NewsRepo()){
@@ -20,6 +20,9 @@ class BaseViewModel<T: Codable>: ViewModelProtocol  {
        }
     
     func initFetchVM()   {
+        //FIXME: (2) add fatal Error exception here to force implementing
+       //this function for any child
+        
         print("\(#file) initFetchVM")
     }
 

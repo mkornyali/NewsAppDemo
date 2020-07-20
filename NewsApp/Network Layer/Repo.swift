@@ -16,7 +16,7 @@ class NewsRepo : NewsRepoProtocol {
     }
     
    
-   
+   //FIXME: (8) remove static instance you don't need it
     static let shared = NewsRepo()
     let network = NewtorkManger()
     

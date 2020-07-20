@@ -15,13 +15,15 @@ protocol ViewModelProtocol : class {
     var observState : Observable<State?>? { get set }
     var apiProtocol : NewsRepoProtocol? { set get}
     
+ 
     
 }
 
 extension ViewModelProtocol {
     
     func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? { return nil }
-    func userPressedCell(at url: String, sender: Any){}
+   // func userPressedCell(at url: String, sender: Any){}
+    func createCellsViewModels(news:[News]){}
     func initFetchVM(){
         
     }

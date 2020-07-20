@@ -64,6 +64,36 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="128.57142857142856"/>
         </scene>
+        <!--Filter Source View Controller-->
+        <scene sceneID="Vku-Si-OqT">
+            <objects>
+                <viewController storyboardIdentifier="FilterSourceViewController" id="4NF-YY-zU0" customClass="FilterSourceViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ho7-7f-CIi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8ha-pP-NaA">
+                                <rect key="frame" x="2" y="46" width="410" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LjN-5t-nfB" firstAttribute="trailing" secondItem="8ha-pP-NaA" secondAttribute="trailing" constant="2" id="XM7-EY-dDC"/>
+                            <constraint firstItem="8ha-pP-NaA" firstAttribute="top" secondItem="LjN-5t-nfB" secondAttribute="top" constant="2" id="gue-yB-NRS"/>
+                            <constraint firstItem="LjN-5t-nfB" firstAttribute="bottom" secondItem="8ha-pP-NaA" secondAttribute="bottom" constant="2" id="pYR-ce-QPr"/>
+                            <constraint firstItem="8ha-pP-NaA" firstAttribute="leading" secondItem="LjN-5t-nfB" secondAttribute="leading" constant="2" id="rrN-Kj-qLg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LjN-5t-nfB"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterTableView" destination="8ha-pP-NaA" id="lme-3Q-5IQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rYi-4m-SHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1930" y="143"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="3G6-Rh-vDA">
             <objects>

@@ -7,10 +7,10 @@
 //
 
 import Foundation
-class BaseViewModel<T: Codable>: ViewModelProtocol  {
+class BaseViewModel: ViewModelProtocol  {
     var apiProtocol: NewsRepoProtocol?
     var observState: Observable<State?>?
-    var sharedRepo = NewsRepo.shared //FIXME: (3) Wrong way 
+//    var sharedRepo = NewsRepo.shared //FIXME: (3) Wrong way
     
     
     init(_ apiManager : NewsRepoProtocol = NewsRepo()){
@@ -19,10 +19,13 @@ class BaseViewModel<T: Codable>: ViewModelProtocol  {
           initFetchVM()
        }
     
+    func createCellsViewModels(items:[News]){
+        print("ovveride it if needed")
+    }
     func initFetchVM()   {
         //FIXME: (2) add fatal Error exception here to force implementing
        //this function for any child
-        
+       // fatalError("Must override")
         print("\(#file) initFetchVM")
     }
 

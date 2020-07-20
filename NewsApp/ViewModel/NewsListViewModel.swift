@@ -9,26 +9,34 @@
 import Foundation
 import SafariServices
 
-class NewsListViewModel : BaseViewModel<Result> {
+class NewsListViewModel : BaseViewModel {
     var hasMoreItems:Bool?
     
     var news = Observable<[News]?> (nil)
     var page = 0
+    var numberOfCells : Int {
+        return cellViewModel.count
+    }
+    var selectedIndex:News?
     
-    private var cellViewModel = [NewsCellViewModel]()
+    private var cellViewModel = [NewsCellViewModel]() {
+        didSet{
+            observState?.value = .reloading
+        }
+    }
     
     override func initFetchVM() {
         observState?.value = .loading
         
         //FIXME: (4) use apiProtocol from parent class
-        sharedRepo.topheadlines(country: "eg", category: "business" , pageSize: 20 , page: 0) { (result, error) in
+        apiProtocol?.topheadlines(country: "eg", category: "technology" , pageSize: 20 , page: 0) { (result, error) in
             if let e = error {
                 print("error is .... \(e.localizedDescription)")
                 return
             }
             self.news.value = result?.articles
             //FIXME: (5) we can make this class in parent and override it here or when needed
-            self.createCellsViewModels(news: (result?.articles)!)
+            self.createCellsViewModels(items:  (result?.articles)!)
             self.observState?.value = .populated
         }
     }
@@ -39,23 +47,18 @@ class NewsListViewModel : BaseViewModel<Result> {
     
     
     
-    func createCellsViewModels(news:[News]){
+    override func createCellsViewModels(items news:[News]){
         for n in news {
             self.cellViewModel.append(NewsCellViewModel(news: n))
         }
     }
     
     
-    func userPressedCell(at url: String, sender: Any) {
-        //FIXME: (6) wrong implementation
-        showSafariWebViewPage(url: url, sender: sender as! UIViewController)
+    func userPressedCell(at indexpath:IndexPath) {
+        self.selectedIndex = self.news.value?[indexpath.row]
+        
     }
     
-    //FIXME: (7) move this function to the view and use Observer
-    func showSafariWebViewPage(url:String , sender:UIViewController){
-        let SafariVC = SafariViewController()
-        SafariVC.newsURL = url.fixedArabicURL
-        sender.navigationController?.pushViewController(SafariVC, animated: true)
-    }
+   
 }
 

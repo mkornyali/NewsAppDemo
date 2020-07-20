@@ -27,6 +27,15 @@ class NewsCell: UITableViewCell {
             newsImageView.kf.setImage(with: resource)
         }
     }
+    func configureCell(news:News) {
+        titleLbl.text = news.title
+        descriptionLbl.text = news.articleDescription
+        sourceLbl.text = news.source?.name
+        dateLbl.text = news.publishedAt
+        //        news.setupDate(publishAt: newsCellViewModel?.date)
+       // let resource = ImageResource(downloadURL: URL(string: news.urlToImage!)!)
+      //  newsImageView.kf.setImage(with: resource)
+    }
     
     static let cellID = "\(NewsCell.self)"
   

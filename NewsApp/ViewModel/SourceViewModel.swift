@@ -8,18 +8,43 @@
 
 import Foundation
 
-class SourceViewModel:BaseViewModel<Source> {
+class SourceViewModel:BaseViewModel{
     
-    var sources = Observable<Source?> (nil)
+    var sources = Observable< Source? > (nil)
+    var sourcesArray:[SourceElement]?
+    var selectedItemID:String?
     
     override func initFetchVM() {
         observState?.value = .loading
-        sharedRepo.getResources { [unowned self] (source, error) in
+        apiProtocol?.getResources { [unowned self] (source, error) in
             if let e = error {
                 print("error is .... \(e.localizedDescription)")
                 self.observState?.value = .error(error: e.localizedDescription)
             }
             self.sources.value = source
+            self.sourcesArray = source?.sources
         }
     }
+    func getSourceID(name:String) -> String {
+        return getIDFromName(name: name)
+    }
+    
+    private func getIDFromName(name:String) -> String{
+        for item in self.sourcesArray! {
+            if name == item.name
+            {
+                return item.id!
+            }
+        }
+        return ""
+    }
+    
+    func didSelectedItem(at name:String){
+        selectedItemID = getSourceID(name: name)
+    }
+    
+    
+    
+    
+    
 }

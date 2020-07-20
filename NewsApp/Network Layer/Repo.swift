@@ -17,7 +17,7 @@ class NewsRepo : NewsRepoProtocol {
     
    
    //FIXME: (8) remove static instance you don't need it
-    static let shared = NewsRepo()
+//    static let shared = NewsRepo()
     let network = NewtorkManger()
     
     typealias newsCompletion = (_ responseModel : Result? , _ errorMessage:  APIError?) -> ()

@@ -14,6 +14,7 @@ public enum State {
     case error(error:String?)
     case empty
     case populated
+    case reloading
     
     //FIXME: add new state for reloading data in tableViews 
     

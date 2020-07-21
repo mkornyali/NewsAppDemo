@@ -13,7 +13,7 @@ class BaseTableViewModel : BaseViewModel{
     typealias cellViewModel = NewsCellViewModel
     var news:Observable<[News]>?
     
-    func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? {
+    override func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? {
         return nil }
     func userPressedCell(at url: String, sender: Any){
         

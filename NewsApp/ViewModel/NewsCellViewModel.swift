@@ -21,7 +21,7 @@ struct NewsCellViewModel : CellsViewModelProtocol {
         
         source = news.source?.name ?? ""
         date = news.publishedAt ?? ""
-        guard  let url = URL(string: news.urlToImage!) else {
+        guard  let url = URL(string: news.urlToImage ?? "https://image.cnbcfm.com/api/v1/image/106624538-1595303491678-gettyimages-620747960-HK_WIRELESS_PAYMENT.jpeg?v=1595303737") else {
             self.imageURL = URL(string: "www.google.com")!
             return
         }

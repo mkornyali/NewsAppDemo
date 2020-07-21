@@ -12,7 +12,7 @@ import iOSDropDown
 class NewsViewController: BaseViewController {
     
     @IBOutlet weak var sourcesDropDown: DropDown!
-    //  var dataSource:UITableViewDataSource?
+    var dataSource:NewsCellDataSource?
     
     var sourcesNames = [String]() {
         didSet {
@@ -28,7 +28,7 @@ class NewsViewController: BaseViewController {
     //let service:Networkable = NewtorkManger()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // dataSource = NewsCellDataSource(viewModel: newsViewModel, numberOFCells: newsViewModel.numberOfCells)
+        dataSource = NewsCellDataSource(viewModel: newsViewModel)
         
         setubObservers(viewModel: newsViewModel)
         initNewsViewModel()
@@ -67,11 +67,11 @@ class NewsViewController: BaseViewController {
     
     
     func setupTableView() {
-        newsTableView.delegate = self
-        newsTableView.dataSource = self
+        //        newsTableView.delegate = self
+        //        newsTableView.dataSource = self
         let cell = UINib(nibName: "\(NewsCell.cellID)", bundle: nil)
         newsTableView.register(cell, forCellReuseIdentifier: "\(NewsCell.cellID)")
-        //newsTableView.dataSource = dataSource
+        newsTableView.dataSource = dataSource
     }
     
     func setupDropDown() {

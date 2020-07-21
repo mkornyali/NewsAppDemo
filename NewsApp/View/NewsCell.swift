@@ -11,6 +11,7 @@ import Kingfisher
 
 class NewsCell: UITableViewCell {
     
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -39,5 +40,9 @@ class NewsCell: UITableViewCell {
     
     static let cellID = "\(NewsCell.self)"
   
+    override func awakeFromNib() {
+        //setupCardViewAppearance()
+    }
+   
     
 }

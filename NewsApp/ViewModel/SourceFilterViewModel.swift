@@ -13,7 +13,7 @@ class SourceFilterViewModel:BaseSourceViewModel {
     var newsArray : [News]?
     
     var selectedIndex:News?
-    var numberOfCells : Int {
+    override var numberOfCells : Int {
         return cellViewModel.count
     }
     
@@ -38,7 +38,7 @@ class SourceFilterViewModel:BaseSourceViewModel {
         }
     }
     
-    func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
+    override func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
         return cellViewModel[indexPath.row]
     }
     

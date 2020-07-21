@@ -9,12 +9,13 @@
 import UIKit
 
 class FilterSourceViewController: BaseViewController {
-    
+    var dataSource:NewsCellDataSource?
     @IBOutlet weak var filterTableView: UITableView!
     let filterViewModel = SourceFilterViewModel()
     var sourceID:String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource = NewsCellDataSource(viewModel: filterViewModel)
         setupTableView()
         setubObservers(viewModel: filterViewModel)
         initFetchViewModel(id:sourceID ?? "")
@@ -34,10 +35,11 @@ class FilterSourceViewController: BaseViewController {
     
     
     func setupTableView() {
-        filterTableView.delegate = self
-        filterTableView.dataSource = self
+//        filterTableView.delegate = self
+//        filterTableView.dataSource = self
         let cell = UINib(nibName: "\(NewsCell.cellID)", bundle: nil)
         filterTableView.register(cell, forCellReuseIdentifier: "\(NewsCell.cellID)")
+        filterTableView.dataSource = dataSource
         
     }
 }

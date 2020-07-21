@@ -11,14 +11,15 @@ import UIKit
 class NewsCellDataSource:NSObject ,UITableViewDataSource {
     
     var viewModel:BaseViewModel?
-    var numberOFCells:Int?
-    init(viewModel:BaseViewModel,numberOFCells:Int) {
+    
+    init(viewModel:BaseViewModel) {
         self.viewModel = viewModel
-        self.numberOFCells = numberOFCells
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOFCells ?? 0
+        return viewModel?.numberOfCells ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

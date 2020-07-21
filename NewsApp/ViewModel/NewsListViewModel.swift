@@ -14,7 +14,7 @@ class NewsListViewModel : BaseViewModel {
     
     var news = Observable<[News]?> (nil)
     var page = 0
-    var numberOfCells : Int {
+    override var numberOfCells : Int {
         return cellViewModel.count
     }
     var selectedIndex:News?
@@ -41,7 +41,7 @@ class NewsListViewModel : BaseViewModel {
         }
     }
     
-    func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
+  override func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
         return cellViewModel[indexPath.row]
     }
     

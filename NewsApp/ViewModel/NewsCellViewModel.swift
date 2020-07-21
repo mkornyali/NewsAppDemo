@@ -21,7 +21,7 @@ struct NewsCellViewModel : CellsViewModelProtocol {
         
         source = news.source?.name ?? ""
         date = news.publishedAt ?? ""
-        guard  let url = URL(string: news.urlToImage!) else {
+        guard  let url = URL(string: news.urlToImage ?? "") else {
             self.imageURL = URL(string: "www.google.com")!
             return
         }
@@ -37,7 +37,7 @@ struct NewsCellViewModel : CellsViewModelProtocol {
             dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
             
             let dateFormatterPrint = DateFormatter()
-            dateFormatterPrint.dateFormat = "dd-MMM-yyyy"
+            dateFormatterPrint.dateFormat = "dd, MMM yyyy"
             let date = dateFormatterGet.date(from: publishAt!) ?? Date()
          
             return dateFormatterPrint.string(from: date)

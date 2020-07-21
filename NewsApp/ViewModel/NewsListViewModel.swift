@@ -17,7 +17,7 @@ class NewsListViewModel : BaseViewModel {
     var numberOfCells : Int {
         return cellViewModel.count
     }
-    var selectedIndex:News?
+    var selectedIndex = Observable<News?>(nil)
     
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
@@ -55,7 +55,8 @@ class NewsListViewModel : BaseViewModel {
     
     
     func userPressedCell(at indexpath:IndexPath) {
-        self.selectedIndex = self.news.value?[indexpath.row]
+        let index = indexpath.row
+        selectedIndex.value =   news.value?[index]
         
     }
     

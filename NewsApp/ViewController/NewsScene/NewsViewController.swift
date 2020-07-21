@@ -50,6 +50,16 @@ class NewsViewController: BaseViewController {
         
         newsViewModel.initFetchVM()
         
+        newsViewModel.selectedIndex.bind { (newObject) in
+            self.showSafariWebViewPage(url: newObject?.url ?? "")
+        }
+        
+    }
+    
+    func showSafariWebViewPage(url:String){
+        let SafariVC = SafariViewController()
+        SafariVC.newsURL = url.fixedArabicURL
+        self.navigationController?.pushViewController(SafariVC, animated: true)
     }
     
     func initSourceViewModel(){

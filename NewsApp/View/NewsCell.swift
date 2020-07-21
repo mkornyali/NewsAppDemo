@@ -25,7 +25,8 @@ class NewsCell: UITableViewCell {
             sourceLbl.text = newsCellViewModel?.source
             dateLbl.text = newsCellViewModel?.setupDate(publishAt: newsCellViewModel?.date)
             let resource = ImageResource(downloadURL: newsCellViewModel!.imageURL)
-            newsImageView.kf.setImage(with: resource)
+            newsImageView.kf.indicatorType = .activity
+            newsImageView.kf.setImage(with: resource,placeholder: UIImage(named: "defalut.jpg"))
         }
     }
     func configureCell(news:News) {

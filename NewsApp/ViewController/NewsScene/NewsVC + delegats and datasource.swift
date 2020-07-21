@@ -12,7 +12,7 @@ import UIKit
 
 extension NewsViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(newsViewModel.numberOfCells)
+       
         return newsViewModel.numberOfCells
     }
 
@@ -21,21 +21,16 @@ extension NewsViewController : UITableViewDelegate , UITableViewDataSource {
         let cellVM = newsViewModel.getCellViewModel(at: indexPath)
 
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
-        //cell.configureCell(news: news[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         newsViewModel.userPressedCell(at:indexPath)
-        if let item = newsViewModel.selectedIndex {
-            showSafariWebViewPage(url: item.url!)
-        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    func showSafariWebViewPage(url:String){
-           let SafariVC = SafariViewController()
-           SafariVC.newsURL = url.fixedArabicURL
-           self.navigationController?.pushViewController(SafariVC, animated: true)
-       }
+    
+    
+    
 
 
 }

@@ -17,6 +17,7 @@ class BaseViewController: UIViewController {
                 self.showActivityIndicator()
             case .error:
                 print("error")
+                self.hideActivityIndicator()
             case .empty:
                 self.hideActivityIndicator()
             case .populated:

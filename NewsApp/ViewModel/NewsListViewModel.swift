@@ -54,7 +54,8 @@ class NewsListViewModel : BaseViewModel {
     }
     
     
-    func userPressedCell(at indexpath:IndexPath) {
+    override func userPressedCell(at indexpath:IndexPath) {
+        print("NewsListViewModel")
         let index = indexpath.row
         selectedIndex.value =   news.value?[index]
         

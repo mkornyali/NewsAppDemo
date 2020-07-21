@@ -14,6 +14,9 @@ class BaseViewModel: ViewModelProtocol  {
     var numberOfCells : Int {
         return 0
     }
+    func userPressedCell(at Index: IndexPath) {
+        
+    }
     
     init(_ apiManager : NewsRepoProtocol = NewsRepo()){
            self.apiProtocol = apiManager

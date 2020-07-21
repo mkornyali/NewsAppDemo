@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class NewsCellDataSource:NSObject ,UITableViewDataSource {
+class NewsCellDataSource:NSObject ,UITableViewDataSource, UITableViewDelegate {
     
     var viewModel:BaseViewModel?
     
@@ -22,6 +22,7 @@ class NewsCellDataSource:NSObject ,UITableViewDataSource {
         return viewModel?.numberOfCells ?? 0
     }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewsCell.cellID)", for: indexPath ) as! NewsCell
         let cellVM = viewModel?.getCellViewModel(at: indexPath)
@@ -30,5 +31,9 @@ class NewsCellDataSource:NSObject ,UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.userPressedCell(at:indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }

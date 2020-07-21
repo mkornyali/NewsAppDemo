@@ -51,6 +51,7 @@ class NewsViewController: BaseViewController {
         newsViewModel.initFetchVM()
         
         newsViewModel.selectedIndex.bind { (newObject) in
+        print("done")
             self.showSafariWebViewPage(url: newObject?.url ?? "")
         }
         
@@ -82,6 +83,7 @@ class NewsViewController: BaseViewController {
         let cell = UINib(nibName: "\(NewsCell.cellID)", bundle: nil)
         newsTableView.register(cell, forCellReuseIdentifier: "\(NewsCell.cellID)")
         newsTableView.dataSource = dataSource
+        newsTableView.delegate = dataSource
     }
     
     func setupDropDown() {

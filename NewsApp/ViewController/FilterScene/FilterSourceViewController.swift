@@ -26,7 +26,17 @@ class FilterSourceViewController: BaseViewController {
     func initFetchViewModel(id:String)
     {
         filterViewModel.fetchSources(source: id)
+        filterViewModel.selectedIndex.bind({ (selectedNews) in
+            print("selected is \(selectedNews?.title ?? "")")
+            self.showSafariWebViewPage(url: selectedNews?.url ?? "")
+        })
     }
+    func showSafariWebViewPage(url:String){
+          let SafariVC = SafariViewController()
+          SafariVC.newsURL = url.fixedArabicURL
+          self.navigationController?.pushViewController(SafariVC, animated: true)
+      }
+    
     override func reloadTableView() {
         filterTableView.reloadData()
     }
@@ -40,6 +50,7 @@ class FilterSourceViewController: BaseViewController {
         let cell = UINib(nibName: "\(NewsCell.cellID)", bundle: nil)
         filterTableView.register(cell, forCellReuseIdentifier: "\(NewsCell.cellID)")
         filterTableView.dataSource = dataSource
+        filterTableView.delegate = dataSource
         
     }
 }

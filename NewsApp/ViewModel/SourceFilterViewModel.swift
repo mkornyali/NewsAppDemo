@@ -10,9 +10,9 @@ import Foundation
 class SourceFilterViewModel:BaseSourceViewModel {
     
     var news = Observable<[News]?>(nil)
-    var newsArray : [News]?
+    private var newsArray : [News]?
     
-    var selectedIndex:News?
+    var selectedIndex = Observable<News?>(nil)
     override var numberOfCells : Int {
         return cellViewModel.count
     }
@@ -49,8 +49,10 @@ class SourceFilterViewModel:BaseSourceViewModel {
             self.cellViewModel.append(NewsCellViewModel(news: n))
         }
     }
-    func userPressedCell(at indexpath:IndexPath) {
-        self.selectedIndex = self.news.value?[indexpath.row]
-        
-    }
+    override func userPressedCell(at indexpath:IndexPath) {
+          print("NewsListViewModel")
+          let index = indexpath.row
+        selectedIndex.value =   news.value?[index] 
+          
+      }
 }

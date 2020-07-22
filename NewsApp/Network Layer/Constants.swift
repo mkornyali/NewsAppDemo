@@ -13,3 +13,9 @@ class Constants {
     static let API_Key = "86631fbafea44bc69f6514924c6584fa"
     private init(){}
 }
+
+enum SortByEnum : String {
+    case relevancy
+    case popularity
+    case publishedAt
+}

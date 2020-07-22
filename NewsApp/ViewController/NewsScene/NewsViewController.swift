@@ -11,6 +11,7 @@ import SafariServices
 import iOSDropDown
 class NewsViewController: BaseViewController {
     
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var sourcesDropDown: DropDown!
     var dataSource:NewsCellDataSource?
     
@@ -28,6 +29,7 @@ class NewsViewController: BaseViewController {
     //let service:Networkable = NewtorkManger()
     override func viewDidLoad() {
         super.viewDidLoad()
+           searchTextField.addTarget(self, action: #selector(NewsViewController.textFieldDidChange(_:)), for: .editingChanged)
         dataSource = NewsCellDataSource(viewModel: newsViewModel)
         
         setubObservers(viewModel: newsViewModel)

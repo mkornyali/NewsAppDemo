@@ -13,6 +13,7 @@ enum NewsAPI {
     case topheadlines(country:String , category:String , pageSize:Int , page:Int)
     case sources
     case filterSource(source:String)
+    case searchEverything(query:String , sortBy:String )
     
 }
 
@@ -26,6 +27,8 @@ extension NewsAPI {
             return stubbedResponse("sources")
         case .filterSource:
             return stubbedResponse("search")
+        case .searchEverything:
+            return stubbedResponse("searchEverything")
         }
     }
     
@@ -55,6 +58,8 @@ extension NewsAPI :TargetType {
         case .sources:
             return "/sources"
         
+        case .searchEverything:
+            return "/everything"
         }
     }
     
@@ -73,6 +78,8 @@ extension NewsAPI :TargetType {
             return ["apiKey":Constants.API_Key]
         case .filterSource(source: let source):
             return ["sources":source , "apiKey": Constants.API_Key]
+        case .searchEverything(let query, let sortBy):
+            return ["q":query , "sortBy" : sortBy ,  "apiKey": Constants.API_Key]
         }
     }
     
@@ -86,6 +93,8 @@ extension NewsAPI :TargetType {
             return.requestParameters(parameters: ["apiKey" : Constants.API_Key] , encoding: URLEncoding.queryString)
         case .filterSource( let source):
             return.requestParameters(parameters: ["sources":source , "apiKey": Constants.API_Key] , encoding: URLEncoding.queryString)
+        case .searchEverything(let query, let sortBy):
+            return .requestParameters(parameters: ["q":query , "sortBy" : sortBy ,  "apiKey": Constants.API_Key], encoding: URLEncoding.queryString)
         }
     }
     

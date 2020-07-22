@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News View Controller-->
+        <!--News-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NewsViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,8 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-wG-Yiq">
+                                <rect key="frame" x="158" y="431" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="filter by source" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7So-Ds-3mm" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="2" y="90" width="410" height="40"/>
+                                <rect key="frame" x="270" y="152" width="142" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="yul-vd-qZP"/>
                                 </constraints>
@@ -38,31 +44,97 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-RZ-O4q">
-                                <rect key="frame" x="2" y="150" width="410" height="710"/>
+                                <rect key="frame" x="2" y="192" width="410" height="619"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ymF-ed-Ri2">
+                                <rect key="frame" x="2" y="90" width="410" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lf2-d9-JW1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="m7P-RZ-O4q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="2zl-7P-d2H"/>
-                            <constraint firstItem="m7P-RZ-O4q" firstAttribute="top" secondItem="7So-Ds-3mm" secondAttribute="bottom" constant="20" id="BeP-lb-Xtm"/>
-                            <constraint firstItem="7So-Ds-3mm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="Yxv-cH-cQc"/>
+                            <constraint firstItem="m7P-RZ-O4q" firstAttribute="top" secondItem="7So-Ds-3mm" secondAttribute="bottom" id="BeP-lb-Xtm"/>
+                            <constraint firstItem="ymF-ed-Ri2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="Cjg-EJ-B6B"/>
+                            <constraint firstItem="ymF-ed-Ri2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="KjG-G8-814"/>
+                            <constraint firstItem="7So-Ds-3mm" firstAttribute="top" secondItem="ymF-ed-Ri2" secondAttribute="bottom" constant="12" id="LVE-Ip-RXI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m7P-RZ-O4q" secondAttribute="bottom" constant="2" id="bWC-3K-Hfb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ymF-ed-Ri2" secondAttribute="trailing" constant="2" id="fEE-UQ-W1G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m7P-RZ-O4q" secondAttribute="trailing" constant="2" id="qOS-Ye-bO9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7So-Ds-3mm" secondAttribute="trailing" constant="2" id="qq3-Vs-rKP"/>
-                            <constraint firstItem="7So-Ds-3mm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="vao-sb-1Y9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="K5q-ir-1PZ"/>
+                    <tabBarItem key="tabBarItem" title="News" image="square.and.arrow.up" catalog="system" selectedImage="square.and.arrow.up.fill" id="wfH-nD-Pt0"/>
+                    <navigationItem key="navigationItem" title="News" id="K5q-ir-1PZ"/>
                     <connections>
                         <outlet property="newsTableView" destination="m7P-RZ-O4q" id="qDG-HW-yn2"/>
+                        <outlet property="searchTextField" destination="ymF-ed-Ri2" id="3EP-1D-kE2"/>
                         <outlet property="sourcesDropDown" destination="7So-Ds-3mm" id="SNp-KA-QUz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="128.57142857142856"/>
+            <point key="canvasLocation" x="1952.1739130434785" y="128.57142857142856"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="4wP-qR-3zq">
+            <objects>
+                <viewController id="eDS-ZC-0Kb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Cg-Nm-2pV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="66E-UR-d0x"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="AWq-mk-bF5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7So-x2-mZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="816"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FyA-IC-CXv">
+            <objects>
+                <viewController id="OZ0-EX-q5f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JyS-W4-hfd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qjt-D8-FkA">
+                                <rect key="frame" x="8" y="110" width="398" height="744"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-AD-cAH">
+                                <rect key="frame" x="8" y="52" width="398" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z0v-2y-GqY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="bottom" secondItem="qjt-D8-FkA" secondAttribute="bottom" constant="8" id="FLx-0R-saW"/>
+                            <constraint firstItem="qjt-D8-FkA" firstAttribute="leading" secondItem="Q96-YQ-Hln" secondAttribute="leading" constant="8" id="Pgt-w2-I87"/>
+                            <constraint firstItem="qjt-D8-FkA" firstAttribute="top" secondItem="SPL-AD-cAH" secondAttribute="bottom" constant="8" id="YPd-CY-SPX"/>
+                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="trailing" secondItem="qjt-D8-FkA" secondAttribute="trailing" constant="8" id="btg-Bx-LGb"/>
+                            <constraint firstItem="SPL-AD-cAH" firstAttribute="top" secondItem="Q96-YQ-Hln" secondAttribute="top" constant="8" id="mBy-IF-ed6"/>
+                            <constraint firstItem="SPL-AD-cAH" firstAttribute="leading" secondItem="Q96-YQ-Hln" secondAttribute="leading" constant="8" id="vna-o2-dc1"/>
+                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="trailing" secondItem="SPL-AD-cAH" secondAttribute="trailing" constant="8" id="x8k-y3-hqU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q96-YQ-Hln"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufn-yY-1FT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="833"/>
         </scene>
         <!--Filter Source View Controller-->
         <scene sceneID="Vku-Si-OqT">
@@ -92,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYi-4m-SHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1930" y="143"/>
+            <point key="canvasLocation" x="2839.130434782609" y="142.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3G6-Rh-vDA">
@@ -105,12 +177,37 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BrE-My-YL4"/>
+                        <segue destination="wFl-M2-CnP" kind="relationship" relationship="rootViewController" id="BrE-My-YL4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPb-Ci-C9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="128.57142857142856"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="DZt-DS-HNC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wFl-M2-CnP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="6YO-8R-Hwc"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SRS-gT-VUY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="K1q-Lm-aq9"/>
+                        <segue destination="eDS-ZC-0Kb" kind="relationship" relationship="viewControllers" id="H0W-rB-aAf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7c-HB-zJA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="128.57142857142856"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
 </document>

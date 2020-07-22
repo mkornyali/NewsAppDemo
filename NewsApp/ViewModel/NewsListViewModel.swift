@@ -17,13 +17,27 @@ class NewsListViewModel : BaseViewModel {
     override var numberOfCells : Int {
         return cellViewModel.count
     }
-    var selectedIndex = Observable<News?>(nil)
+   var selectedIndex = Observable<News?>(nil)
     
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
             observState?.value = .reloading
         }
     }
+    func searchEveryThing(query:String , sortBy:String){
+        observState?.value = .loading
+        apiProtocol?.searchEverything(query: query, sortBy: sortBy, ComplitionHandler: { (result, error) in
+            if let e = error {
+                print("error is .... \(e.localizedDescription)")
+                self.observState?.value = .error(error: e.localizedDescription)
+                return
+            }
+            self.news.value = result?.articles
+            self.createCellsViewModels(items:  (result?.articles)!)
+            self.observState?.value = .populated
+        })
+    }
+    
     
     override func initFetchVM() {
         observState?.value = .loading
@@ -32,6 +46,7 @@ class NewsListViewModel : BaseViewModel {
         apiProtocol?.topheadlines(country: "eg", category: "technology" , pageSize: 20 , page: 0) { (result, error) in
             if let e = error {
                 print("error is .... \(e.localizedDescription)")
+                self.observState?.value = .error(error: e.localizedDescription)
                 return
             }
             self.news.value = result?.articles
@@ -41,13 +56,14 @@ class NewsListViewModel : BaseViewModel {
         }
     }
     
-  override func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
+    override func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
         return cellViewModel[indexPath.row]
     }
     
     
     
     override func createCellsViewModels(items news:[News]){
+        cellViewModel.removeAll()
         for n in news {
             self.cellViewModel.append(NewsCellViewModel(news: n))
         }
@@ -61,6 +77,12 @@ class NewsListViewModel : BaseViewModel {
         
     }
     
-   
+    
+    
+    
+    
+    
+    
+    
 }
 

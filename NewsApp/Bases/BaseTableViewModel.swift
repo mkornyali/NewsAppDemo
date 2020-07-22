@@ -8,6 +8,7 @@
 
 import Foundation
 
+// for trying 
 class BaseTableViewModel : BaseViewModel{
     
     typealias cellViewModel = NewsCellViewModel

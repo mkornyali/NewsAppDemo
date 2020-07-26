@@ -10,6 +10,9 @@ import Foundation
 import SafariServices
 
 class NewsListViewModel : BaseViewModel {
+    
+    let favoriteViewModel = FavoriteViewModel()
+    
     var hasMoreItems:Bool?
     
     var news = Observable<[News]?> (nil)
@@ -17,26 +20,17 @@ class NewsListViewModel : BaseViewModel {
     override var numberOfCells : Int {
         return cellViewModel.count
     }
-   var selectedIndex = Observable<News?>(nil)
+    var selectedIndex = Observable<News?>(nil)
+    var objectToAddInRealm = Observable<News?>(nil)
+    var objectToRemoveFromRealm = Observable<News?>(nil)
     
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
+            
             observState?.value = .reloading
         }
     }
-    func searchEveryThing(query:String , sortBy:String){
-        observState?.value = .loading
-        apiProtocol?.searchEverything(query: query, sortBy: sortBy, ComplitionHandler: { (result, error) in
-            if let e = error {
-                print("error is .... \(e.localizedDescription)")
-                self.observState?.value = .error(error: e.localizedDescription)
-                return
-            }
-            self.news.value = result?.articles
-            self.createCellsViewModels(items:  (result?.articles)!)
-            self.observState?.value = .populated
-        })
-    }
+   
     
     
     override func initFetchVM() {
@@ -50,6 +44,7 @@ class NewsListViewModel : BaseViewModel {
                 return
             }
             self.news.value = result?.articles
+            print("number of articles inside initVM NewsListVM is \(result?.articles?.count)")
             //FIXME: (5) we can make this class in parent and override it here or when needed
             self.createCellsViewModels(items:  (result?.articles)!)
             self.observState?.value = .populated
@@ -64,8 +59,13 @@ class NewsListViewModel : BaseViewModel {
     
     override func createCellsViewModels(items news:[News]){
         cellViewModel.removeAll()
+        
+        
+        
+        //        print("count of fetched news in NewsListVM is \(news.count)")
         for n in news {
-            self.cellViewModel.append(NewsCellViewModel(news: n))
+            let newsChecker = checkNewsIsExist(news: n)
+            self.cellViewModel.append(NewsCellViewModel(news: n, isFavotite: newsChecker))
         }
     }
     
@@ -77,12 +77,37 @@ class NewsListViewModel : BaseViewModel {
         
     }
     
+    func searchEveryThing(query:String , sortBy:String){
+           observState?.value = .loading
+           apiProtocol?.searchEverything(query: query, sortBy: sortBy, ComplitionHandler: { (result, error) in
+               if let e = error {
+                   print("error is .... \(e.localizedDescription)")
+                   self.observState?.value = .error(error: e.localizedDescription)
+                   return
+               }
+               self.news.value = result?.articles
+               self.createCellsViewModels(items:  (result?.articles)!)
+               self.observState?.value = .populated
+           })
+       }
     
     
+    private func isNewsFavorit(news:News) -> Bool {
+        return favoriteViewModel.checkIsNewExist(news: news)
+    }
     
     
+    private func checkNewsIsExist(news:News) -> Bool {
+        return favoriteViewModel.checkIsNewExist(news: news)
+    }
     
+    func didPressedOnAddFavoriteButton(at indexPath:IndexPath) {
+        objectToAddInRealm.value = news.value?[indexPath.row]
+    }
     
+    func didPressedOnARemovwFavoriteButton(at indexPath:IndexPath) {
+        objectToRemoveFromRealm.value = news.value?[indexPath.row]
+    }
     
 }
 

@@ -18,5 +18,6 @@ target 'NewsApp' do
 pod 'Moya'
 pod 'Kingfisher', '~> 5.0'
 pod 'iOSDropDown'
+pod 'RealmSwift'
 
 end

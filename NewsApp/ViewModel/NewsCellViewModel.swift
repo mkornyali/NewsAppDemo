@@ -9,13 +9,16 @@
 import Foundation
 
 struct NewsCellViewModel : CellsViewModelProtocol {
+    
     let title:String
     let description:String
     let date:String
     let source:String
     let imageURL:URL
+    var isFavorit:Bool = false
+   
     
-    init(news:News) {
+    init(news:News ) {
         title = news.title ?? ""
         description = news.articleDescription ?? ""
         
@@ -28,6 +31,11 @@ struct NewsCellViewModel : CellsViewModelProtocol {
         
          imageURL = url
        
+    }
+    
+    init(news:News , isFavotite:Bool) {
+        self.init(news: news)
+        self.isFavorit = isFavotite
     }
     
     func setupDate(publishAt:String?) -> String

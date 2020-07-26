@@ -27,7 +27,7 @@ extension UIViewController {
         // before adding it, you need to check if it is already has been added:
         for subview in view.subviews {
             if subview.tag == 100 {
-                print("already added")
+                print("activityIndicator already added")
                 return
             }
         }

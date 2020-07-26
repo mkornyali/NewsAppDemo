@@ -12,6 +12,8 @@ class NewsCellDataSource:NSObject ,UITableViewDataSource, UITableViewDelegate {
     
     var viewModel:BaseViewModel?
     
+//    var newsDelegate:NewsRealmDelegate?
+    
     init(viewModel:BaseViewModel) {
         self.viewModel = viewModel
         
@@ -25,9 +27,16 @@ class NewsCellDataSource:NSObject ,UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewsCell.cellID)", for: indexPath ) as! NewsCell
+        
         let cellVM = viewModel?.getCellViewModel(at: indexPath)
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
+//        cell.newsRealmDelegate = self
+//        cell.indexPath = indexPath
+//        newsDelegate?.addNewsToRealm(news: News(source: SourceNews(id: "aa", name: "ol"), author: "ikljh", title: "kjh", articleDescription: "lkj", url: "jk", urlToImage: "lll", publishedAt: "lkj", content: "lkij"))
+//        newsDelegate?.removeNewsFromRealm(news: News(source: SourceNews(id: "aa", name: "ol"), author: "ikljh", title: "kjh", articleDescription: "lkj", url: "jk", urlToImage: "lll", publishedAt: "lkj", content: "lkij"))
         //cell.configureCell(news: news[indexPath.row])
+        
+        
         return cell
     }
     
@@ -37,3 +46,5 @@ class NewsCellDataSource:NSObject ,UITableViewDataSource, UITableViewDelegate {
     }
     
 }
+
+

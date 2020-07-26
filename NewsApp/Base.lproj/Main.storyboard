@@ -85,14 +85,29 @@
         <!--Favorite-->
         <scene sceneID="4wP-qR-3zq">
             <objects>
-                <viewController id="eDS-ZC-0Kb" sceneMemberID="viewController">
+                <viewController id="eDS-ZC-0Kb" customClass="FavoriteViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Cg-Nm-2pV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="55q-hi-NNF">
+                                <rect key="frame" x="8" y="96" width="398" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="55q-hi-NNF" firstAttribute="top" secondItem="66E-UR-d0x" secondAttribute="top" constant="8" id="Pcu-wS-OSf"/>
+                            <constraint firstItem="55q-hi-NNF" firstAttribute="leading" secondItem="66E-UR-d0x" secondAttribute="leading" constant="8" id="Pwz-y1-L0Z"/>
+                            <constraint firstItem="66E-UR-d0x" firstAttribute="trailing" secondItem="55q-hi-NNF" secondAttribute="trailing" constant="8" id="ev9-mJ-UJ0"/>
+                            <constraint firstItem="66E-UR-d0x" firstAttribute="bottom" secondItem="55q-hi-NNF" secondAttribute="bottom" constant="8" id="sb4-fs-65a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="66E-UR-d0x"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="AWq-mk-bF5"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="55q-hi-NNF" id="X2p-6U-8Ls"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7So-x2-mZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufn-yY-1FT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="833"/>
+            <point key="canvasLocation" x="2059" y="816"/>
         </scene>
         <!--Filter Source View Controller-->
         <scene sceneID="Vku-Si-OqT">

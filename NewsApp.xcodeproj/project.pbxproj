@@ -25,6 +25,16 @@
 		A205546524BF4DD3001383D2 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205546424BF4DD3001383D2 /* NewsListViewModel.swift */; };
 		A205546724BF4EFB001383D2 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205546624BF4EFB001383D2 /* State.swift */; };
 		A205546924BF572D001383D2 /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205546824BF572D001383D2 /* NewsCellViewModel.swift */; };
+		A210B05824CD657400BDFEBF /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B05724CD657400BDFEBF /* FavoriteViewController.swift */; };
+		A210B05C24CD6C6D00BDFEBF /* DataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B05B24CD6C6D00BDFEBF /* DataManger.swift */; };
+		A210B05E24CD6CFE00BDFEBF /* RealmDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B05D24CD6CFE00BDFEBF /* RealmDataManger.swift */; };
+		A210B06124CD6D8E00BDFEBF /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06024CD6D8E00BDFEBF /* Provider.swift */; };
+		A210B06424CD6DE500BDFEBF /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06324CD6DE500BDFEBF /* Mapper.swift */; };
+		A210B06724CD6E4600BDFEBF /* BaseDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06624CD6E4600BDFEBF /* BaseDataRepo.swift */; };
+		A210B06924CD6E6C00BDFEBF /* NewsDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06824CD6E6C00BDFEBF /* NewsDataRepo.swift */; };
+		A210B06B24CD6EE600BDFEBF /* News + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06A24CD6EE600BDFEBF /* News + Realm.swift */; };
+		A210B06D24CD7EBB00BDFEBF /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06C24CD7EBB00BDFEBF /* FavoriteViewModel.swift */; };
+		A210B06F24CDAEE700BDFEBF /* FavoritVC + D & D.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210B06E24CDAEE700BDFEBF /* FavoritVC + D & D.swift */; };
 		A211027624C5D44200E2EA40 /* NewsCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A211027524C5D44200E2EA40 /* NewsCellDataSource.swift */; };
 		A211027824C5DEFD00E2EA40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A211027724C5DEFD00E2EA40 /* BaseViewController.swift */; };
 		A21B693324C70125004206E8 /* BaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21B693224C70125004206E8 /* BaseCardView.swift */; };
@@ -100,6 +110,16 @@
 		A205546424BF4DD3001383D2 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		A205546624BF4EFB001383D2 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		A205546824BF572D001383D2 /* NewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
+		A210B05724CD657400BDFEBF /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		A210B05B24CD6C6D00BDFEBF /* DataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManger.swift; sourceTree = "<group>"; };
+		A210B05D24CD6CFE00BDFEBF /* RealmDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManger.swift; sourceTree = "<group>"; };
+		A210B06024CD6D8E00BDFEBF /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		A210B06324CD6DE500BDFEBF /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		A210B06624CD6E4600BDFEBF /* BaseDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataRepo.swift; sourceTree = "<group>"; };
+		A210B06824CD6E6C00BDFEBF /* NewsDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataRepo.swift; sourceTree = "<group>"; };
+		A210B06A24CD6EE600BDFEBF /* News + Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News + Realm.swift"; sourceTree = "<group>"; };
+		A210B06C24CD7EBB00BDFEBF /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		A210B06E24CDAEE700BDFEBF /* FavoritVC + D & D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritVC + D & D.swift"; sourceTree = "<group>"; };
 		A211027524C5D44200E2EA40 /* NewsCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellDataSource.swift; sourceTree = "<group>"; };
 		A211027724C5DEFD00E2EA40 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A21B693224C70125004206E8 /* BaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardView.swift; sourceTree = "<group>"; };
@@ -210,6 +230,7 @@
 				A25A410E24C0419A00A2DA10 /* Application */,
 				A25A410D24C0417800A2DA10 /* View */,
 				A25A410924C03FD600A2DA10 /* Extension */,
+				A210B05924CD693D00BDFEBF /* Data Layer */,
 				A205546324BF4DB4001383D2 /* ViewModel */,
 				A205545C24BF2F32001383D2 /* Network Layer */,
 				A205545B24BF2F2D001383D2 /* Model */,
@@ -242,6 +263,7 @@
 			children = (
 				A205545724BF2A13001383D2 /* News.swift */,
 				A254CC6E24C47F6900DC4109 /* Source.swift */,
+				A210B06A24CD6EE600BDFEBF /* News + Realm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,8 +289,63 @@
 				A205546824BF572D001383D2 /* NewsCellViewModel.swift */,
 				A205546424BF4DD3001383D2 /* NewsListViewModel.swift */,
 				A254CC7224C49C3B00DC4109 /* SourceFilterViewModel.swift */,
+				A210B06C24CD7EBB00BDFEBF /* FavoriteViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A210B05624CD653400BDFEBF /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				A210B05724CD657400BDFEBF /* FavoriteViewController.swift */,
+				A210B06E24CDAEE700BDFEBF /* FavoritVC + D & D.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		A210B05924CD693D00BDFEBF /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				A210B06524CD6E0C00BDFEBF /* DataRepositories */,
+				A210B06224CD6DB600BDFEBF /* Mapper */,
+				A210B05F24CD6D5900BDFEBF /* Provider */,
+				A210B05A24CD6B1500BDFEBF /* Mangers */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		A210B05A24CD6B1500BDFEBF /* Mangers */ = {
+			isa = PBXGroup;
+			children = (
+				A210B05B24CD6C6D00BDFEBF /* DataManger.swift */,
+				A210B05D24CD6CFE00BDFEBF /* RealmDataManger.swift */,
+			);
+			path = Mangers;
+			sourceTree = "<group>";
+		};
+		A210B05F24CD6D5900BDFEBF /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				A210B06024CD6D8E00BDFEBF /* Provider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		A210B06224CD6DB600BDFEBF /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				A210B06324CD6DE500BDFEBF /* Mapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		A210B06524CD6E0C00BDFEBF /* DataRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				A210B06624CD6E4600BDFEBF /* BaseDataRepo.swift */,
+				A210B06824CD6E6C00BDFEBF /* NewsDataRepo.swift */,
+			);
+			path = DataRepositories;
 			sourceTree = "<group>";
 		};
 		A254CC2A24C43E9400DC4109 /* Bases */ = {
@@ -324,6 +401,7 @@
 		A25A410F24C041BE00A2DA10 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A210B05624CD653400BDFEBF /* Favorite */,
 				A27D05FC24C5B24B00F878F3 /* FilterScene */,
 				A27D05FB24C5AF0900F878F3 /* NewsScene */,
 				A25A412024C096C100A2DA10 /* SafariViewController.swift */,
@@ -593,7 +671,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A205542024BF2441001383D2 /* AppDelegate.swift in Sources */,
+				A210B05C24CD6C6D00BDFEBF /* DataManger.swift in Sources */,
 				A205545324BF24DD001383D2 /* NewsCell.swift in Sources */,
+				A210B05E24CD6CFE00BDFEBF /* RealmDataManger.swift in Sources */,
+				A210B06724CD6E4600BDFEBF /* BaseDataRepo.swift in Sources */,
+				A210B06F24CDAEE700BDFEBF /* FavoritVC + D & D.swift in Sources */,
+				A210B06124CD6D8E00BDFEBF /* Provider.swift in Sources */,
 				A27D060024C5C8F300F878F3 /* FilterVC + Delegate and datasource.swift in Sources */,
 				A205542224BF2442001383D2 /* SceneDelegate.swift in Sources */,
 				A205546924BF572D001383D2 /* NewsCellViewModel.swift in Sources */,
@@ -601,20 +684,25 @@
 				A205546724BF4EFB001383D2 /* State.swift in Sources */,
 				A254CC2C24C43ECD00DC4109 /* BaseViewModel.swift in Sources */,
 				A21B693324C70125004206E8 /* BaseCardView.swift in Sources */,
+				A210B06424CD6DE500BDFEBF /* Mapper.swift in Sources */,
 				A254CC3024C43FF400DC4109 /* CellsViewModelProtocol.swift in Sources */,
 				A254CC3224C4477100DC4109 /* NewsRepoProtocol.swift in Sources */,
 				A254CC3424C4481100DC4109 /* Error.swift in Sources */,
 				A205545824BF2A13001383D2 /* News.swift in Sources */,
+				A210B06D24CD7EBB00BDFEBF /* FavoriteViewModel.swift in Sources */,
 				A25A410B24C0400400A2DA10 /* UIViewController + Activity indicator.swift in Sources */,
 				A25A412124C096C100A2DA10 /* SafariViewController.swift in Sources */,
 				A25A411124C042CB00A2DA10 /* Repo.swift in Sources */,
 				A205545A24BF2EF1001383D2 /* Observable.swift in Sources */,
 				A205545E24BF2F6A001383D2 /* NewsAPI.swift in Sources */,
+				A210B06924CD6E6C00BDFEBF /* NewsDataRepo.swift in Sources */,
 				A254CC2E24C43EE900DC4109 /* ViewModelProtocol.swift in Sources */,
 				A205546224BF3DE5001383D2 /* NetworkManger.swift in Sources */,
 				A254CC6F24C47F6900DC4109 /* Source.swift in Sources */,
 				A254CC7324C49C3B00DC4109 /* SourceFilterViewModel.swift in Sources */,
+				A210B05824CD657400BDFEBF /* FavoriteViewController.swift in Sources */,
 				A27D05FE24C5B26F00F878F3 /* FilterSourceViewController.swift in Sources */,
+				A210B06B24CD6EE600BDFEBF /* News + Realm.swift in Sources */,
 				A205546524BF4DD3001383D2 /* NewsListViewModel.swift in Sources */,
 				A27D05F624C589EB00F878F3 /* BaseSourceViewModel.swift in Sources */,
 				A205545624BF272E001383D2 /* NewsViewController.swift in Sources */,

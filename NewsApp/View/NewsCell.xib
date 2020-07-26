@@ -57,17 +57,27 @@
                                 <rect key="frame" x="0.0" y="307.5" width="363" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-sn-0Bq">
-                                        <rect key="frame" x="0.0" y="0.0" width="363" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="328" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PtB-gZ-86c">
+                                        <rect key="frame" x="336" y="2" width="25" height="16.5"/>
+                                        <color key="tintColor" red="0.55889734455958551" green="0.44773718514818467" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="g9o-3d-x4T"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.27495048415492956" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="PtB-gZ-86c" secondAttribute="trailing" constant="2" id="G9c-8O-xx6"/>
                                     <constraint firstItem="GIT-sn-0Bq" firstAttribute="top" secondItem="Eqq-lH-pJ5" secondAttribute="top" id="GyC-Lk-jts"/>
-                                    <constraint firstAttribute="trailing" secondItem="GIT-sn-0Bq" secondAttribute="trailing" id="OJt-Ba-14Y"/>
+                                    <constraint firstItem="PtB-gZ-86c" firstAttribute="top" secondItem="Eqq-lH-pJ5" secondAttribute="top" constant="2" id="J4z-bs-uHI"/>
+                                    <constraint firstAttribute="bottom" secondItem="PtB-gZ-86c" secondAttribute="bottom" constant="2" id="nNu-4i-SIJ"/>
                                     <constraint firstAttribute="bottom" secondItem="GIT-sn-0Bq" secondAttribute="bottom" id="qv6-ea-geu"/>
+                                    <constraint firstItem="PtB-gZ-86c" firstAttribute="leading" secondItem="GIT-sn-0Bq" secondAttribute="trailing" constant="8" id="s3f-VG-5kn"/>
                                     <constraint firstItem="GIT-sn-0Bq" firstAttribute="leading" secondItem="Eqq-lH-pJ5" secondAttribute="leading" id="yc1-Yk-bzv"/>
                                 </constraints>
                             </view>
@@ -88,7 +98,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
-                                <real key="value" value="10"/>
+                                <real key="value" value="8"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,16 +140,18 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateLbl" destination="WA0-Dm-bdb" id="OXT-4d-dBW"/>
-                <outlet property="descriptionLbl" destination="GIT-sn-0Bq" id="iXc-eh-o6p"/>
-                <outlet property="newsImageView" destination="KkN-dZ-BV2" id="ELh-X7-Kc2"/>
-                <outlet property="sourceLbl" destination="bDq-F9-J5q" id="bva-pj-cf3"/>
-                <outlet property="titleLbl" destination="3pP-4l-mT8" id="rG3-qD-TlW"/>
+                <outlet property="dateLbl" destination="WA0-Dm-bdb" id="43a-sz-Cfz"/>
+                <outlet property="descriptionLbl" destination="GIT-sn-0Bq" id="Z6D-TY-qvm"/>
+                <outlet property="newsImageView" destination="KkN-dZ-BV2" id="xFQ-1k-j1D"/>
+                <outlet property="sourceLbl" destination="bDq-F9-J5q" id="OvL-p6-Hr0"/>
+                <outlet property="starFavoriteBtn" destination="PtB-gZ-86c" id="fYx-cL-rbK"/>
+                <outlet property="titleLbl" destination="3pP-4l-mT8" id="ojf-rJ-Hco"/>
             </connections>
             <point key="canvasLocation" x="-218.11594202898553" y="90.401785714285708"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="default.jpg" width="500" height="500"/>
+        <image name="star" catalog="system" width="128" height="116"/>
     </resources>
 </document>

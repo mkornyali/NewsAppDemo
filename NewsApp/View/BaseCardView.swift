@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 @IBDesignable class BaseCardView:UIView {
+    
+    
     @IBInspectable var cornerRedius:Double {
         get {
             return Double(self.layer.cornerRadius)

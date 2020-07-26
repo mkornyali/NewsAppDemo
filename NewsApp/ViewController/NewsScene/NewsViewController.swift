@@ -15,6 +15,7 @@ class NewsViewController: BaseViewController {
     @IBOutlet weak var sourcesDropDown: DropDown!
     var dataSource:NewsCellDataSource?
     
+    
     var sourcesNames = [String]() {
         didSet {
             sourcesDropDown.optionArray = sourcesNames
@@ -23,6 +24,7 @@ class NewsViewController: BaseViewController {
     // inject it from scene delegate
     var newsViewModel = NewsListViewModel()
     var sourcesViewModel = SourceViewModel()
+    var favoritViewModel = FavoriteViewModel()
     
     
     @IBOutlet weak var newsTableView: UITableView!
@@ -39,6 +41,8 @@ class NewsViewController: BaseViewController {
         //setupFilterSourceViewModelBining()
         setupTableView()
         initSourceViewModel()
+        setupAddingObjectToRealm()
+        setupRemovingObjectFromRealm()
     }
     
     override func reloadTableView() {
@@ -51,23 +55,22 @@ class NewsViewController: BaseViewController {
         
         
         newsViewModel.initFetchVM()
-        
-        newsViewModel.selectedIndex.bind { (newObject) in
+        newsViewModel.selectedIndex.bind { [unowned self](newObject) in
         print("done")
             self.showSafariWebViewPage(url: newObject?.url ?? "")
         }
         
     }
     
-    func showSafariWebViewPage(url:String){
-        let SafariVC = SafariViewController()
-        SafariVC.newsURL = url.fixedArabicURL
-        self.navigationController?.pushViewController(SafariVC, animated: true)
-    }
+//    func showSafariWebViewPage(url:String){
+//        let SafariVC = SafariViewController()
+//        SafariVC.newsURL = url.fixedArabicURL
+//        self.navigationController?.pushViewController(SafariVC, animated: true)
+//    }
     
     func initSourceViewModel(){
         sourcesViewModel.initFetchVM()
-        sourcesViewModel.sources.subscribe { source in
+        sourcesViewModel.sources.subscribe {[unowned self] source in
             _ = source?.sources.map({
                 $0.forEach {
                     self.sourcesNames.append($0.name ?? "")
@@ -84,8 +87,8 @@ class NewsViewController: BaseViewController {
         //        newsTableView.dataSource = self
         let cell = UINib(nibName: "\(NewsCell.cellID)", bundle: nil)
         newsTableView.register(cell, forCellReuseIdentifier: "\(NewsCell.cellID)")
-        newsTableView.dataSource = dataSource
-        newsTableView.delegate = dataSource
+        newsTableView.dataSource = self
+        newsTableView.delegate = self
     }
     
     func setupDropDown() {

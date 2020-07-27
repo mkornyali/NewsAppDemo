@@ -29,7 +29,7 @@ class FavoriteViewModel : BaseViewModel{
     
     func addNews(news:News) {
         newsRepo.saveNew(new: news)
-        cellViewModel.append(NewsCellViewModel(news: news))
+        //cellViewModel.append(NewsCellViewModel(news: news))
        // self.observState?.value = .reloading
     }
     
@@ -44,6 +44,8 @@ class FavoriteViewModel : BaseViewModel{
     func deleteAllNews() {
         newsRepo.deleteAll()
     }
+    
+    
     
     func getAllNews() {
         newsRepo.getAllNews(on: Sorted(key: "author", ascending: true)) { (news) in
@@ -65,9 +67,14 @@ class FavoriteViewModel : BaseViewModel{
        
        
        override func createCellsViewModels(items news:[News]){
-           //cellViewModel.removeAll()
+           cellViewModel.removeAll()
            for n in news {
-               self.cellViewModel.append(NewsCellViewModel(news: n))
+            let newsChecker = checkNewsIsExist(news: n)
+            let checkInListAlready = checkFavoriteInList(news: n)
+           
+            if newsChecker && !checkInListAlready {
+                self.cellViewModel.append(NewsCellViewModel(news: n, isFavotite: newsChecker))
+            }
             self.observState?.value = .populated           }
        }
     override func userPressedCell(at indexpath:IndexPath) {
@@ -77,6 +84,13 @@ class FavoriteViewModel : BaseViewModel{
         
     }
     
+    func checkFavoriteInList(news:News) -> Bool{
+        let newsCellVideModel = NewsCellViewModel(news: news)
+        return cellViewModel.contains {
+            $0.title == newsCellVideModel.title
+        }
+    }
+    
     func deleteNewsAt(at indexPath :IndexPath) {
         let index = indexPath.row
         let new = news.value?[index]
@@ -84,9 +98,10 @@ class FavoriteViewModel : BaseViewModel{
         print(index)
         news.value?.remove(at: index)
         cellViewModel.remove(at: index)
-        let bool =  newsRepo.checkIsNewExist(news: News(source: SourceNews(id: "aa", name: "source1"), author: "aaaMohamed", title: "Book", articleDescription: "asdasdsad", url: "oooaooaoaoosdod", urlToImage: "asdlkamsdmasd", publishedAt: "1212", content: "asdasd"))
-        print(bool)
         deleteNews(news: new!)
         self.observState?.value = .reloading
+    }
+    private func checkNewsIsExist(news:News) -> Bool {
+        return newsRepo.checkIsNewExist(news: news)
     }
 }

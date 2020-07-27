@@ -12,14 +12,14 @@ import RealmSwift
 
 protocol DataManager {
     
-    func create<T: Storable>(_ model: T.Type, completion: @escaping ((T) -> Void)) throws
+   
     func save(object: Storable) throws
-    func update(object: Storable) throws
+
     func delete(object: Storable) throws
     func deleteAll<T: Storable>(_ model: T.Type) throws
-    func fetch<T: Storable>(_ model: T.Type, predicate: NSPredicate?, sorted: Sorted?, completion: (([T]) -> ()))
-    func object<T: Storable>(_ type: T.Type, key: String) throws -> T?
-    func checkObject<T>(_ type: T.Type, key: String) throws -> Bool
+    func fetchAll<T: Storable>(_ model: T.Type, predicate: NSPredicate?, sorted: Sorted?, completion: (([T]) -> ()))
+    func getObject<T: Storable>(_ type: T.Type, key: String) throws -> T?
+    func checkObjectIsExistInDB<T>(_ type: T.Type, key: String) throws -> Bool
     
 }
 

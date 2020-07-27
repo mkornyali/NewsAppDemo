@@ -12,20 +12,17 @@ import UIKit
 
 extension NewsViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("number of cells in NewsViewController is \(newsViewModel.numberOfCells)")
         return newsViewModel.numberOfCells
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewsCell.cellID)", for: indexPath ) as! NewsCell
-        
-        print("Inside cellForRowAtIndexPath")
         let cellVM = newsViewModel.getCellViewModel(at: indexPath)
 
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
         cell.newsRealmDelegate = self
+        cell.sourceLabelDelegate = self
         cell.indexPath = indexPath
-        //cell.configureCell(news: news[indexPath.row])
         return cell
     }
 
@@ -33,33 +30,28 @@ extension NewsViewController : UITableViewDelegate , UITableViewDataSource {
         newsViewModel.userPressedCell(at:indexPath)
      
     }
-    func showSafariWebViewPage(url:String){
-           let SafariVC = SafariViewController()
-           SafariVC.newsURL = url.fixedArabicURL
-           self.navigationController?.pushViewController(SafariVC, animated: true)
-       }
+
     
     func setupAddingObjectToRealm(){
         newsViewModel.objectToAddInRealm.subscribe { [unowned self] (news) in
             print(news?.title ?? "no title")
             if let new = news {
-                self.favoritViewModel.addNews(news: new)
+                self.newsViewModel.addNews(news: new)
             }
         }
     }
     
     func setupRemovingObjectFromRealm(){
           newsViewModel.objectToRemoveFromRealm.subscribe {[unowned self] (news) in
-              print(news?.title ?? "no title")
               if let new = news {
-                self.favoritViewModel.deleteNews(news: new)
+                self.newsViewModel.removeNews(news: new)
               }
           }
       }
 }
 
 
-
+//MARK:- add and remove in realm database delegate
 extension NewsViewController:NewsRealmDelegate {
     func addNewsToRealm(cell: NewsCell) {
 
@@ -71,5 +63,19 @@ extension NewsViewController:NewsRealmDelegate {
         print("removeNewsFromRealm")
         newsViewModel.didPressedOnARemovwFavoriteButton(at:cell.indexPath!)
     }
+    
+}
+
+
+extension NewsViewController : SourceLabelClickableDelegate {
+    func didClickedOnSourceLabel(at cell: NewsCell) {
+        if let index = cell.indexPath?.row {
+            newsViewModel.didPressedOnSourceLabel(index: index)
+        }
   
+    }
+    
+
+    
+    
 }

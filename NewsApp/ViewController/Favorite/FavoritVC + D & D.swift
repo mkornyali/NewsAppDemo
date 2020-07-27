@@ -13,6 +13,12 @@ import UIKit
 extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Number Of cells\(favoritViewModel.numberOfCells)")
+        if favoritViewModel.numberOfCells == 0 {
+            tableView.setEmptyView(title: "You don't have any favorite news yet", message: "click start button in news page to add to favorite", messageImage: #imageLiteral(resourceName: "swipe-right (1)"))
+        }
+        else {
+            tableView.restore()
+        }
         return favoritViewModel.numberOfCells
     }
 
@@ -33,11 +39,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         favoritViewModel.userPressedCell(at:indexPath)
      
     }
-    func showSafariWebViewPage(url:String){
-           let SafariVC = SafariViewController()
-           SafariVC.newsURL = url.fixedArabicURL
-           self.navigationController?.pushViewController(SafariVC, animated: true)
-       }
+    
 }
 
 extension FavoriteViewController:NewsRealmDelegate {

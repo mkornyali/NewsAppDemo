@@ -19,8 +19,9 @@ class BaseDataRepository<T> {
     
     //MARK: - Methods
     func fetch<T>(_ model: T.Type, predicate: NSPredicate? = nil, sorted: Sorted?, completion: (([T]) -> ())) where T : Storable {
-        dbManager.fetch(model, predicate: predicate, sorted: sorted, completion: completion)
+        dbManager.fetchAll(model, predicate: predicate, sorted: sorted, completion: completion)
     }
+    
     
     func deleteAll<T>(_ model: T.Type) throws where T : Storable {
         try dbManager.deleteAll(model)
@@ -30,16 +31,11 @@ class BaseDataRepository<T> {
         try dbManager.delete(object: object)
     }
     
-    func update(object: Storable) throws {
-        
-        try dbManager.update(object: object)
-    }
+    
     func save(object: Storable) throws {
         try dbManager.save(object: object)
     }
     
-    func create<T>(_ model: T.Type, completion: @escaping ((T) -> Void)) throws where T : Storable {
-        try dbManager.create(model, completion: completion)
-    }
+  
     
 }

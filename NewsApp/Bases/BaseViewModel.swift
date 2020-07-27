@@ -10,14 +10,10 @@ import Foundation
 class BaseViewModel: ViewModelProtocol  {
     var apiProtocol: NewsRepoProtocol?
     var observState: Observable<State?>?
-//    var sharedRepo = NewsRepo.shared //FIXME: (3) Wrong way
     var numberOfCells : Int {
         return 0
     }
-    func userPressedCell(at Index: IndexPath) {
-        
-    }
-    
+  
     init(_ apiManager : NewsRepoProtocol = NewsRepo()){
            self.apiProtocol = apiManager
            self.observState = Observable<State?>(.empty)
@@ -30,10 +26,12 @@ class BaseViewModel: ViewModelProtocol  {
     func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? {
           return nil }
     func initFetchVM()   {
-        //FIXME: (2) add fatal Error exception here to force implementing
-       //this function for any child
-       // fatalError("Must override")
+    
         print("\(#file) initFetchVM")
     }
+    func userPressedCell(at Index: IndexPath) {
+          
+      }
+      
 
 }

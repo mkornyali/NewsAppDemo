@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//type of DTO that returned from viewModels is CellsViewModelProtocol
 protocol CellsViewModelProtocol {
     
 }

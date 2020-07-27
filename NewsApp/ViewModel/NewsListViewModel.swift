@@ -23,6 +23,7 @@ class NewsListViewModel : BaseViewModel {
     var selectedIndex = Observable<News?>(nil)
     var objectToAddInRealm = Observable<News?>(nil)
     var objectToRemoveFromRealm = Observable<News?>(nil)
+    var selectedSourceID = Observable<String?>(nil)
     
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
@@ -30,21 +31,20 @@ class NewsListViewModel : BaseViewModel {
             observState?.value = .reloading
         }
     }
-   
+    
     
     
     override func initFetchVM() {
         observState?.value = .loading
         
-        //FIXME: (4) use apiProtocol from parent class
-        apiProtocol?.topheadlines(country: "eg", category: "technology" , pageSize: 20 , page: 0) { (result, error) in
+        apiProtocol?.topheadlines(country: "eg", category: "sports" , pageSize: 20 , page: 0) { (result, error) in
             if let e = error {
                 print("error is .... \(e.localizedDescription)")
                 self.observState?.value = .error(error: e.localizedDescription)
                 return
             }
             self.news.value = result?.articles
-            print("number of articles inside initVM NewsListVM is \(result?.articles?.count)")
+            print("number of articles inside initVM NewsListVM is \(result?.articles?.count ?? 0)")
             //FIXME: (5) we can make this class in parent and override it here or when needed
             self.createCellsViewModels(items:  (result?.articles)!)
             self.observState?.value = .populated
@@ -55,46 +55,42 @@ class NewsListViewModel : BaseViewModel {
         return cellViewModel[indexPath.row]
     }
     
-    
-    
     override func createCellsViewModels(items news:[News]){
         cellViewModel.removeAll()
-        
-        
-        
-        //        print("count of fetched news in NewsListVM is \(news.count)")
         for n in news {
             let newsChecker = checkNewsIsExist(news: n)
             self.cellViewModel.append(NewsCellViewModel(news: n, isFavotite: newsChecker))
         }
     }
     
-    
     override func userPressedCell(at indexpath:IndexPath) {
-        print("NewsListViewModel")
         let index = indexpath.row
         selectedIndex.value =   news.value?[index]
         
     }
     
-    func searchEveryThing(query:String , sortBy:String){
-           observState?.value = .loading
-           apiProtocol?.searchEverything(query: query, sortBy: sortBy, ComplitionHandler: { (result, error) in
-               if let e = error {
-                   print("error is .... \(e.localizedDescription)")
-                   self.observState?.value = .error(error: e.localizedDescription)
-                   return
-               }
-               self.news.value = result?.articles
-               self.createCellsViewModels(items:  (result?.articles)!)
-               self.observState?.value = .populated
-           })
-       }
     
-    
-    private func isNewsFavorit(news:News) -> Bool {
-        return favoriteViewModel.checkIsNewExist(news: news)
+    func reloadTableWhenBackFromFavScreen(){
+        if let news = news.value {
+            createCellsViewModels(items: news)
+        }
     }
+    
+    func searchEveryThing(query:String , sortBy:String){
+        observState?.value = .loading
+        apiProtocol?.searchEverything(query: query, sortBy: sortBy, ComplitionHandler: { (result, error) in
+            if let e = error {
+                print("error is .... \(e.localizedDescription)")
+                self.observState?.value = .error(error: e.localizedDescription)
+                return
+            }
+            self.news.value = result?.articles
+            self.createCellsViewModels(items:  (result?.articles)!)
+            self.observState?.value = .populated
+        })
+    }
+    
+    
     
     
     private func checkNewsIsExist(news:News) -> Bool {
@@ -107,6 +103,25 @@ class NewsListViewModel : BaseViewModel {
     
     func didPressedOnARemovwFavoriteButton(at indexPath:IndexPath) {
         objectToRemoveFromRealm.value = news.value?[indexPath.row]
+    }
+    
+    func addNews(news:News) {
+        favoriteViewModel.addNews(news: news)
+    }
+    
+    func removeNews(news:News) {
+        favoriteViewModel.deleteNews(news: news)
+    }
+    
+    func didPressedOnSourceLabel(index:Int) {
+        if let sourceID = news.value![index].source?.id {
+            print("there is ID and it is \(sourceID)")
+            selectedSourceID.value = sourceID
+            
+        }
+        else {
+            print("NO ID for this Source")
+        }
     }
     
 }

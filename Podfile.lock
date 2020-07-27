@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (5.2.2)
-  - iOSDropDown (0.3.4)
   - Kingfisher (5.14.1):
     - Kingfisher/Core (= 5.14.1)
   - Kingfisher/Core (5.14.1)
@@ -15,7 +14,6 @@ PODS:
     - Realm (= 5.3.1)
 
 DEPENDENCIES:
-  - iOSDropDown
   - Kingfisher (~> 5.0)
   - Moya
   - RealmSwift
@@ -23,7 +21,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - iOSDropDown
     - Kingfisher
     - Moya
     - Realm
@@ -31,12 +28,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Realm: 8ec860dc0c3079f7cab1085d95661a06f162d487
   RealmSwift: ca9d0df752157befb8c28034301f988a56ce91eb
 
-PODFILE CHECKSUM: d5c6896e54f69f6eb855e52587c0037474d826dc
+PODFILE CHECKSUM: 1da4f637ab1e74156141b6124aff82aadc0deb1f
 
 COCOAPODS: 1.9.0

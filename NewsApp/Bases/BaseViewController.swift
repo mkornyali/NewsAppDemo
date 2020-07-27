@@ -30,6 +30,14 @@ class BaseViewController: UIViewController {
             }
         })
     }
+    
     func reloadTableView(){}
     
+    
+    // on click on cell using observer
+      func showSafariWebViewPage(url:String){
+          let SafariVC = SafariViewController()
+          SafariVC.newsURL = url.fixedArabicURL
+          self.navigationController?.pushViewController(SafariVC, animated: true)
+      }
 }

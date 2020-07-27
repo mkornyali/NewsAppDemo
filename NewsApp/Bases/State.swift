@@ -15,7 +15,5 @@ public enum State {
     case empty
     case populated
     case reloading
-    
-    //FIXME: add new state for reloading data in tableViews 
-    
+        
 }

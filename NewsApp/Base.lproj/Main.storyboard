@@ -21,30 +21,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="filter by source" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7So-Ds-3mm" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="270" y="152" width="142" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="yul-vd-qZP"/>
-                                </constraints>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
-                                        <real key="value" value="300"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-RZ-O4q">
-                                <rect key="frame" x="2" y="192" width="410" height="619"/>
+                                <rect key="frame" x="2" y="156" width="410" height="655"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ymF-ed-Ri2">
@@ -59,14 +37,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="m7P-RZ-O4q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="2zl-7P-d2H"/>
-                            <constraint firstItem="m7P-RZ-O4q" firstAttribute="top" secondItem="7So-Ds-3mm" secondAttribute="bottom" id="BeP-lb-Xtm"/>
                             <constraint firstItem="ymF-ed-Ri2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="Cjg-EJ-B6B"/>
                             <constraint firstItem="ymF-ed-Ri2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="KjG-G8-814"/>
-                            <constraint firstItem="7So-Ds-3mm" firstAttribute="top" secondItem="ymF-ed-Ri2" secondAttribute="bottom" constant="12" id="LVE-Ip-RXI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m7P-RZ-O4q" secondAttribute="bottom" constant="2" id="bWC-3K-Hfb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ymF-ed-Ri2" secondAttribute="trailing" constant="2" id="fEE-UQ-W1G"/>
+                            <constraint firstItem="m7P-RZ-O4q" firstAttribute="top" secondItem="ymF-ed-Ri2" secondAttribute="bottom" constant="16" id="gL1-eb-2tr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m7P-RZ-O4q" secondAttribute="trailing" constant="2" id="qOS-Ye-bO9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7So-Ds-3mm" secondAttribute="trailing" constant="2" id="qq3-Vs-rKP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -75,7 +51,6 @@
                     <connections>
                         <outlet property="newsTableView" destination="m7P-RZ-O4q" id="qDG-HW-yn2"/>
                         <outlet property="searchTextField" destination="ymF-ed-Ri2" id="3EP-1D-kE2"/>
-                        <outlet property="sourcesDropDown" destination="7So-Ds-3mm" id="SNp-KA-QUz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -111,45 +86,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7So-x2-mZh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="816"/>
+            <point key="canvasLocation" x="1042" y="863"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="FyA-IC-CXv">
+        <!--News Source View Controller-->
+        <scene sceneID="Z8I-sw-f8h">
             <objects>
-                <viewController id="OZ0-EX-q5f" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JyS-W4-hfd">
+                <viewController storyboardIdentifier="NewsSourceViewController" id="NU5-Ic-jp8" customClass="NewsSourceViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xQH-qZ-t8m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qjt-D8-FkA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hBt-hf-396">
                                 <rect key="frame" x="8" y="110" width="398" height="744"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SPL-AD-cAH">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SourceName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzg-5A-jgX">
                                 <rect key="frame" x="8" y="52" width="398" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="z0v-2y-GqY"/>
+                                    <constraint firstAttribute="height" constant="50" id="U1d-1h-gG1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="bottom" secondItem="qjt-D8-FkA" secondAttribute="bottom" constant="8" id="FLx-0R-saW"/>
-                            <constraint firstItem="qjt-D8-FkA" firstAttribute="leading" secondItem="Q96-YQ-Hln" secondAttribute="leading" constant="8" id="Pgt-w2-I87"/>
-                            <constraint firstItem="qjt-D8-FkA" firstAttribute="top" secondItem="SPL-AD-cAH" secondAttribute="bottom" constant="8" id="YPd-CY-SPX"/>
-                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="trailing" secondItem="qjt-D8-FkA" secondAttribute="trailing" constant="8" id="btg-Bx-LGb"/>
-                            <constraint firstItem="SPL-AD-cAH" firstAttribute="top" secondItem="Q96-YQ-Hln" secondAttribute="top" constant="8" id="mBy-IF-ed6"/>
-                            <constraint firstItem="SPL-AD-cAH" firstAttribute="leading" secondItem="Q96-YQ-Hln" secondAttribute="leading" constant="8" id="vna-o2-dc1"/>
-                            <constraint firstItem="Q96-YQ-Hln" firstAttribute="trailing" secondItem="SPL-AD-cAH" secondAttribute="trailing" constant="8" id="x8k-y3-hqU"/>
+                            <constraint firstItem="KE0-YD-Ac8" firstAttribute="bottom" secondItem="hBt-hf-396" secondAttribute="bottom" constant="8" id="2mf-fN-oat"/>
+                            <constraint firstItem="yzg-5A-jgX" firstAttribute="top" secondItem="KE0-YD-Ac8" secondAttribute="top" constant="8" id="C4r-xw-xzY"/>
+                            <constraint firstItem="hBt-hf-396" firstAttribute="top" secondItem="yzg-5A-jgX" secondAttribute="bottom" constant="8" id="NoJ-RJ-0R5"/>
+                            <constraint firstItem="yzg-5A-jgX" firstAttribute="leading" secondItem="KE0-YD-Ac8" secondAttribute="leading" constant="8" id="Szm-Cm-usw"/>
+                            <constraint firstItem="hBt-hf-396" firstAttribute="leading" secondItem="KE0-YD-Ac8" secondAttribute="leading" constant="8" id="WxL-A7-pj0"/>
+                            <constraint firstItem="KE0-YD-Ac8" firstAttribute="trailing" secondItem="hBt-hf-396" secondAttribute="trailing" constant="8" id="eK6-zq-m7V"/>
+                            <constraint firstItem="KE0-YD-Ac8" firstAttribute="trailing" secondItem="yzg-5A-jgX" secondAttribute="trailing" constant="8" id="igh-1L-qyx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Q96-YQ-Hln"/>
+                        <viewLayoutGuide key="safeArea" id="KE0-YD-Ac8"/>
                     </view>
+                    <connections>
+                        <outlet property="newsSourceTableView" destination="hBt-hf-396" id="6Fg-Lk-Bne"/>
+                        <outlet property="sourceNameLbl" destination="yzg-5A-jgX" id="kdQ-Vh-w9k"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufn-yY-1FT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KjW-r4-r1y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2059" y="816"/>
+            <point key="canvasLocation" x="2246" y="824"/>
         </scene>
         <!--Filter Source View Controller-->
         <scene sceneID="Vku-Si-OqT">

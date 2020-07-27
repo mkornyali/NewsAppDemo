@@ -23,7 +23,6 @@ extension ViewModelProtocol {
     var numberOfCells : Int {
         return 0
     }
-    
     func getCellViewModel(at indexPath : IndexPath) -> CellsViewModelProtocol? { return nil }
     func userPressedCell(at Index:IndexPath){}
     func createCellsViewModels(news:[News]){}

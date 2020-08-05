@@ -36,9 +36,5 @@ class NewtorkManger:Networkable {
                     complitionHandler(nil,.noInternet)
                 }
         }
-    }
-    
-    
-    
-    
+    }    
 }

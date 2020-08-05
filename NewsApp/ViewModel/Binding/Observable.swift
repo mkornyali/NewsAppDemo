@@ -31,6 +31,4 @@ class Observable<T> {
         self.observer = observer
         observer?(value)
     }
-
-
 }

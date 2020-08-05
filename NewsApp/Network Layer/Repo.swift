@@ -21,7 +21,7 @@ class NewsRepo : NewsRepoProtocol {
     
    
 
-    let network = NewtorkManger()
+    let network:Networkable = NewtorkManger()
     
     typealias newsCompletion = (_ responseModel : Result? , _ errorMessage:  APIError?) -> ()
     

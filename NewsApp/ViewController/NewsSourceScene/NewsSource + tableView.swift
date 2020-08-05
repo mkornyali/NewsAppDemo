@@ -17,7 +17,7 @@ extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewsCell.cellID)", for: indexPath ) as! NewsCell
         let cellVM = sourceViewModel.getCellViewModel(at: indexPath)
-        cell.newsRealmDelegate = self
+        cell.favoriteDelegate = self
         cell.indexPath = indexPath
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
         return cell
@@ -42,12 +42,12 @@ extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource
 
 
 extension NewsSourceViewController:NewsRealmDelegate {
-    func addNewsToRealm(cell: NewsCell) {
-        sourceViewModel.didPressedOnAddFavoriteButton(at:cell.indexPath!)
-    }
-    
-    func removeNewsFromRealm(cell: NewsCell) {
-        sourceViewModel.didPressedOnARemovwFavoriteButton(at:cell.indexPath!)
+   func toggleFavotire(cell: NewsCell) {
+//        guard let index = cell.indexPath?.row else { return }
+//        if let newsObject = sourceViewModel.getNews(for: index){
+//            favoritViewModel.toggleNewsFromFavourite(newsObject: newsObject)
+//        }
+        
     }
     
     

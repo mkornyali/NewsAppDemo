@@ -12,7 +12,7 @@ import UIKit
 
 extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number Of cells\(favoritViewModel.numberOfCells)")
+        print("Number Of cells \(favoritViewModel.numberOfCells)")
         if favoritViewModel.numberOfCells == 0 {
             tableView.setEmptyView(title: "You don't have any favorite news yet", message: "click start button in news page to add to favorite", messageImage: #imageLiteral(resourceName: "swipe-right (1)"))
         }
@@ -27,9 +27,7 @@ extension FavoriteViewController : UITableViewDelegate , UITableViewDataSource {
         let cellVM = favoritViewModel.getCellViewModel(at: indexPath)
 
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
-        cell.newsRealmDelegate = self
-        cell.isFavorite = true
-        cell.setupFavoriteBtn()
+        cell.favoriteDelegate = self
         cell.indexPath = indexPath
         //cell.configureCell(news: news[indexPath.row])
         return cell
@@ -52,5 +50,13 @@ extension FavoriteViewController:NewsRealmDelegate {
         print("removeNewsFromRealm")
         favoritViewModel.deleteNewsAt(at:cell.indexPath!)
             }
+    
+    func toggleFavotire(cell: NewsCell) {
+        guard let index = cell.indexPath?.row else { return }
+        if let newsObject = favoritViewModel.getNews(for: index){
+            favoritViewModel.toggleNewsFromFavourite(newsObject: newsObject)
+        }
+        
+    }
   
 }

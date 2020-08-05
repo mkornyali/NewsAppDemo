@@ -32,6 +32,7 @@ class FavoriteViewController: BaseViewController {
         
     }
     override func reloadTableView() {
+        debugPrint("Hello favorite reloading , here is lucifer")
         favoritesTableView.reloadData()
         
     }

@@ -9,11 +9,27 @@
 import UIKit
 import Kingfisher
 
+//MARK: - delegate function
+
+// delegate for add and remove from database
+protocol NewsRealmDelegate {
+    func toggleFavotire(cell:NewsCell)
+}
+
+// delegate for detect which source label is clicked
+protocol SourceLabelClickableDelegate {
+    func didClickedOnSourceLabel(at cell:NewsCell)
+}
+
+
+
+
+
 class NewsCell: UITableViewCell {
     
     
     
-    
+    //MARK: - outlets
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -21,19 +37,15 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var starFavoriteBtn: UIImageView!
     
-    
-    var newsRealmDelegate:NewsRealmDelegate?
+    //MARK: - variables
+    var favoriteDelegate:NewsRealmDelegate?
     var sourceLabelDelegate:SourceLabelClickableDelegate?
     var indexPath: IndexPath?
     
     static let cellID = "\(NewsCell.self)"
-    let starImage = UIImage(systemName: "star")
-    let starFillImage = UIImage(systemName: "star.fill")
-    var isFavorite:Bool? {
-        didSet {
-            setupFavoriteBtn()
-        }
-    }
+    let starImage = UIImage(named: "heart.png")
+    let starFillImage = UIImage(named: "fill-heart.png")
+   
     
     var newsCellViewModel:NewsCellViewModel? {
            didSet {
@@ -44,19 +56,16 @@ class NewsCell: UITableViewCell {
                let resource = ImageResource(downloadURL: newsCellViewModel!.imageURL)
                newsImageView.kf.indicatorType = .activity
                newsImageView.kf.setImage(with: resource,placeholder: UIImage(named: "defalut.jpg"))
-               isFavorite = newsCellViewModel?.isFavorit
+            starFavoriteBtn.image = newsCellViewModel?.isFavorit ?? false ? starFillImage : starImage
            }
        }
     
     override func awakeFromNib() {
-        setupFavoriteBtn()
         setupSourceLabelClick()
         setupStarbuttonClick()
     }
     
-    func setupFavoriteBtn () {
-        starFavoriteBtn.image = isFavorite ?? false ? starFillImage : starImage
-    }
+    
 
     func setupStarbuttonClick(){
         let starButtnTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(favoriteBtnDidTapped(tapGestureRecognizer:)))
@@ -78,28 +87,10 @@ class NewsCell: UITableViewCell {
     }
     
     @objc func favoriteBtnDidTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        if isFavorite! {
-            isFavorite = false
-            setupFavoriteBtn()
-            newsRealmDelegate?.removeNewsFromRealm(cell: self)
-            
-        }
-        else {
-            isFavorite = true
-            setupFavoriteBtn()
-            newsRealmDelegate?.addNewsToRealm(cell: self)
-        }
+      
+        favoriteDelegate?.toggleFavotire(cell: self)
     }
     
 }
 
-// delegate for add and remove from database
-protocol NewsRealmDelegate {
-    func addNewsToRealm(cell:NewsCell)
-    func removeNewsFromRealm(cell:NewsCell)
-}
 
-// delegate for detect which source label is clicked
-protocol SourceLabelClickableDelegate {
-    func didClickedOnSourceLabel(at cell:NewsCell)
-}

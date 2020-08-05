@@ -76,13 +76,13 @@ class SourceFilterViewModel:BaseSourceViewModel {
         objectToRemoveFromRealm.value = news.value?[indexPath.row]
     }
     
-    func addNews(news: News) {
-        favoriteViewModel.addNews(news: news)
-    }
-    
-    func deleteNews(news: News) {
-        favoriteViewModel.deleteNews(news: news)
-    }
-    
+//    func addNews(news: News) {
+//        favoriteViewModel.addNews(news: news)
+//    }
+//    
+//    func deleteNews(news: News) {
+//        favoriteViewModel.deleteNews(news: news)
+//    }
+//    
     
 }

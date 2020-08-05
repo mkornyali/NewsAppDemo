@@ -96,22 +96,27 @@ class NewsListViewModel : BaseViewModel {
     private func checkNewsIsExist(news:News) -> Bool {
         return favoriteViewModel.checkIsNewExist(news: news)
     }
+//
+//    func didPressedOnAddFavoriteButton(at indexPath:IndexPath) {
+//        objectToAddInRealm.value = news.value?[indexPath.row]
+//    }
+//
+//    func didPressedOnARemovwFavoriteButton(at indexPath:IndexPath) {
+//        objectToRemoveFromRealm.value = news.value?[indexPath.row]
+//    }
     
-    func didPressedOnAddFavoriteButton(at indexPath:IndexPath) {
-        objectToAddInRealm.value = news.value?[indexPath.row]
+    
+    
+    func toggleFavortie(for news : News) {
+        favoriteViewModel.toggleNewsFromFavourite(newsObject: news)
+        reloadTableWhenBackFromFavScreen()
     }
     
-    func didPressedOnARemovwFavoriteButton(at indexPath:IndexPath) {
-        objectToRemoveFromRealm.value = news.value?[indexPath.row]
+    
+    func getNews(form indexPath: IndexPath) -> News? {
+        return news.value?[indexPath.row]
     }
     
-    func addNews(news:News) {
-        favoriteViewModel.addNews(news: news)
-    }
-    
-    func removeNews(news:News) {
-        favoriteViewModel.deleteNews(news: news)
-    }
     
     func didPressedOnSourceLabel(index:Int) {
         if let sourceID = news.value![index].source?.id {

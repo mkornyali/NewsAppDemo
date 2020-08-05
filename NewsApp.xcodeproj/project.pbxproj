@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		77E9A66734A2CB81CED7A0EF /* Pods_NewsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0876274BBCBBD3D113C3B4D3 /* Pods_NewsAppTests.framework */; };
+		8836B07124D18011009E0A4A /* fill-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8836B07024D18011009E0A4A /* fill-heart.png */; };
+		8836B07324D1C042009E0A4A /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8836B07224D1C042009E0A4A /* heart.png */; };
 		88E689CC24C6F81100041906 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88E689CB24C6F81100041906 /* default.jpg */; };
 		A205542024BF2441001383D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205541F24BF2441001383D2 /* AppDelegate.swift */; };
 		A205542224BF2442001383D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A205542124BF2442001383D2 /* SceneDelegate.swift */; };
@@ -51,7 +53,6 @@
 		A25A411124C042CB00A2DA10 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A411024C042CB00A2DA10 /* Repo.swift */; };
 		A25A411624C051C600A2DA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25A411224C051C500A2DA10 /* Main.storyboard */; };
 		A25A411724C051C600A2DA10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25A411424C051C600A2DA10 /* LaunchScreen.storyboard */; };
-		A25A411F24C055CB00A2DA10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A25A411824C0528600A2DA10 /* Info.plist */; };
 		A25A412124C096C100A2DA10 /* SafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A412024C096C100A2DA10 /* SafariViewController.swift */; };
 		A275453724CEB66F00BE750D /* UITableView + HandleEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275453624CEB66F00BE750D /* UITableView + HandleEmpty.swift */; };
 		A275453A24CEC8F500BE750D /* NewsSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275453924CEC8F500BE750D /* NewsSourceViewController.swift */; };
@@ -86,6 +87,8 @@
 		55CF4E1075BD555A75CFB616 /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7894C6248EF4BB7511098215 /* Pods-NewsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsAppTests.release.xcconfig"; path = "Target Support Files/Pods-NewsAppTests/Pods-NewsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F71BECF70AF0C5AE1C1F410 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8836B07024D18011009E0A4A /* fill-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fill-heart.png"; sourceTree = "<group>"; };
+		8836B07224D1C042009E0A4A /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		88E689CB24C6F81100041906 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		8BA54E8BFFCB08ED5DAC26D9 /* Pods_NewsApp_NewsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp_NewsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91361075ABF2B9D3CA0196A0 /* Pods-NewsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsAppTests/Pods-NewsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -225,7 +228,9 @@
 		A205541E24BF2441001383D2 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				8836B07024D18011009E0A4A /* fill-heart.png */,
 				88E689CB24C6F81100041906 /* default.jpg */,
+				8836B07224D1C042009E0A4A /* heart.png */,
 				A254CC2A24C43E9400DC4109 /* Bases */,
 				A25A410E24C0419A00A2DA10 /* Application */,
 				A25A410D24C0417800A2DA10 /* View */,
@@ -496,7 +501,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Mohamed Korany";
 				TargetAttributes = {
 					A205541B24BF2441001383D2 = {
@@ -540,8 +545,9 @@
 				A25A411624C051C600A2DA10 /* Main.storyboard in Resources */,
 				A205542924BF2446001383D2 /* Assets.xcassets in Resources */,
 				A25A411724C051C600A2DA10 /* LaunchScreen.storyboard in Resources */,
-				A25A411F24C055CB00A2DA10 /* Info.plist in Resources */,
+				8836B07324D1C042009E0A4A /* heart.png in Resources */,
 				A205545424BF24DD001383D2 /* NewsCell.xib in Resources */,
+				8836B07124D18011009E0A4A /* fill-heart.png in Resources */,
 				88E689CC24C6F81100041906 /* default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -870,7 +876,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

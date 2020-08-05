@@ -27,20 +27,15 @@ class FavoriteViewModel : BaseViewModel{
         self.newsRepo = NewsDataRepository(dbManager: dbManager)
     }
     
-    func addNews(news:News) {
-        newsRepo.saveNew(new: news)
-        //cellViewModel.append(NewsCellViewModel(news: news))
-       // self.observState?.value = .reloading
-    }
     
-    func deleteNews(news:News){
-        //let viewModelFromNews = NewsCellViewModel(news: news)
+    func toggleNewsFromFavourite(newsObject : News) {
         
-   
-        newsRepo.deleteNews(new: news)
-        self.observState?.value = .reloading
+        if checkIsNewExist(news: newsObject) { newsRepo.deleteNews(new: newsObject)}
+        else { newsRepo.saveNew(new: newsObject) }
+        getAllNews()
     }
     
+  
     func deleteAllNews() {
         newsRepo.deleteAll()
     }
@@ -98,10 +93,14 @@ class FavoriteViewModel : BaseViewModel{
         print(index)
         news.value?.remove(at: index)
         cellViewModel.remove(at: index)
-        deleteNews(news: new!)
+        toggleNewsFromFavourite(newsObject: new!)
         self.observState?.value = .reloading
     }
     private func checkNewsIsExist(news:News) -> Bool {
         return newsRepo.checkIsNewExist(news: news)
+    }
+    
+    func getNews(for index: Int) -> News?{
+        return news.value?[index]
     }
 }

@@ -15,7 +15,7 @@ class SafariViewController: UIViewController, WKNavigationDelegate  {
         super.viewDidLoad()
        
         webView.frame = view.bounds
-        print("URL is .....\(newsURL.fixedArabicURL)")
+       
         webView.navigationDelegate = self
         
         let url = URL(string: newsURL!)

@@ -46,7 +46,7 @@ class NewsSourceViewController: BaseViewController {
            sourceViewModel.objectToAddInRealm.subscribe { [unowned self] (news) in
                print(news?.title ?? "no title")
                if let new = news {
-                   self.sourceViewModel.addNews(news: new)
+                   //self.sourceViewModel.addNews(news: new)
                }
            }
        }
@@ -55,7 +55,7 @@ class NewsSourceViewController: BaseViewController {
              sourceViewModel.objectToRemoveFromRealm.subscribe {[unowned self] (news) in
                  print(news?.title ?? "no title")
                  if let new = news {
-                   self.sourceViewModel.deleteNews(news: new)
+                   //self.sourceViewModel.deleteNews(news: new)
                  }
              }
          }

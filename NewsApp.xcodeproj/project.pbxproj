@@ -54,6 +54,8 @@
 		A25A411624C051C600A2DA10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25A411224C051C500A2DA10 /* Main.storyboard */; };
 		A25A411724C051C600A2DA10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25A411424C051C600A2DA10 /* LaunchScreen.storyboard */; };
 		A25A412124C096C100A2DA10 /* SafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A412024C096C100A2DA10 /* SafariViewController.swift */; };
+		A25F02A924E97B1400FFE613 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25F02A824E97B1400FFE613 /* Swinject.framework */; };
+		A25F02AA24E97B1500FFE613 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A25F02A824E97B1400FFE613 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A275453724CEB66F00BE750D /* UITableView + HandleEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275453624CEB66F00BE750D /* UITableView + HandleEmpty.swift */; };
 		A275453A24CEC8F500BE750D /* NewsSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275453924CEC8F500BE750D /* NewsSourceViewController.swift */; };
 		A275453C24CECC4B00BE750D /* NewsSource + tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275453B24CECC4B00BE750D /* NewsSource + tableView.swift */; };
@@ -79,6 +81,20 @@
 			remoteInfo = NewsApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A25F02AB24E97B1500FFE613 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A25F02AA24E97B1500FFE613 /* Swinject.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0876274BBCBBD3D113C3B4D3 /* Pods_NewsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +157,7 @@
 		A25A411524C051C600A2DA10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = NewsApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A25A411824C0528600A2DA10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A25A412024C096C100A2DA10 /* SafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewController.swift; sourceTree = "<group>"; };
+		A25F02A824E97B1400FFE613 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		A275453624CEB66F00BE750D /* UITableView + HandleEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + HandleEmpty.swift"; sourceTree = "<group>"; };
 		A275453924CEC8F500BE750D /* NewsSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceViewController.swift; sourceTree = "<group>"; };
 		A275453B24CECC4B00BE750D /* NewsSource + tableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsSource + tableView.swift"; sourceTree = "<group>"; };
@@ -155,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC248F332C452B7D520D742F /* Pods_NewsApp.framework in Frameworks */,
+				A25F02A924E97B1400FFE613 /* Swinject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +211,7 @@
 		71C9CA84F18E7CCBB2A15C90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A25F02A824E97B1400FFE613 /* Swinject.framework */,
 				55CF4E1075BD555A75CFB616 /* Pods_NewsApp.framework */,
 				8BA54E8BFFCB08ED5DAC26D9 /* Pods_NewsApp_NewsAppUITests.framework */,
 				0876274BBCBBD3D113C3B4D3 /* Pods_NewsAppTests.framework */,
@@ -445,6 +464,8 @@
 				A205541924BF2441001383D2 /* Frameworks */,
 				A205541A24BF2441001383D2 /* Resources */,
 				D22D31C746C6B2A88787D62C /* [CP] Embed Pods Frameworks */,
+				A25F02AB24E97B1500FFE613 /* Embed Frameworks */,
+				A25F02AC24E97B3300FFE613 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -629,6 +650,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsApp-NewsAppUITests/Pods-NewsApp-NewsAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A25F02AC24E97B3300FFE613 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		D22D31C746C6B2A88787D62C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -822,7 +861,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -876,7 +915,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -892,6 +931,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -910,6 +953,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

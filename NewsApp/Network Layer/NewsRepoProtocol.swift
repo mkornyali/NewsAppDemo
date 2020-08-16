@@ -12,6 +12,9 @@ typealias newsCompletionHandler = (_ responseModel : Result? , _ errorMessage:  
 typealias sourcesCompletionHandler = (_ responseModel : Source? , _ errorMessage:  APIError?) -> ()
 
 protocol NewsRepoProtocol {
+    
+    var network:Networkable? {get set}
+    
   func topheadlines(country:String , category:String,pageSize:Int , page:Int , complitionHandler:  @escaping newsCompletionHandler)
     
     func getResources(complitionHandler:@escaping sourcesCompletionHandler )

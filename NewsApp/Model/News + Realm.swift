@@ -59,8 +59,8 @@ final class NewsRealm:Object {
   @objc dynamic var  sourceNewsName: String = ""
   
      override static func primaryKey() -> String? {
-         return "url"
-     }
+            return "url"
+        }
   
   
 }

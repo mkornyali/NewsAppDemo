@@ -41,14 +41,18 @@ extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource
 
 
 
-extension NewsSourceViewController:NewsRealmDelegate {
-   func toggleFavotire(cell: NewsCell) {
-//        guard let index = cell.indexPath?.row else { return }
-//        if let newsObject = sourceViewModel.getNews(for: index){
-//            favoritViewModel.toggleNewsFromFavourite(newsObject: newsObject)
-//        }
-        
-    }
+
+   extension NewsSourceViewController:NewsRealmDelegate {
+     
+       
+       
+       func toggleFavotire(cell: NewsCell) {
+           guard let index = cell.indexPath else { return }
+           if let newsObj = sourceViewModel.getNews(form: index){
+               sourceViewModel.toggleFavortie(for: newsObj)
+           }
+       }
+       
+   }
     
-    
-}
+

@@ -48,6 +48,7 @@ class SourceFilterViewModel:BaseSourceViewModel {
     
     
     override func createCellsViewModels(items news:[News]){
+        cellViewModel.removeAll()
         for n in news {
             let newsChecker = checkNewsIsExist(news: n)
             self.cellViewModel.append(NewsCellViewModel(news: n, isFavotite: newsChecker))
@@ -76,6 +77,10 @@ class SourceFilterViewModel:BaseSourceViewModel {
         objectToRemoveFromRealm.value = news.value?[indexPath.row]
     }
     
+    
+    func getNews(form indexPath: IndexPath) -> News? {
+        return news.value?[indexPath.row]
+    }
 //    func addNews(news: News) {
 //        favoriteViewModel.addNews(news: news)
 //    }
@@ -84,5 +89,10 @@ class SourceFilterViewModel:BaseSourceViewModel {
 //        favoriteViewModel.deleteNews(news: news)
 //    }
 //    
-    
+    func toggleFavortie(for news : News) {
+          favoriteViewModel.toggleNewsFromFavourite(newsObject: news)
+        if let news = self.news.value {
+                     createCellsViewModels(items: news)
+                 }
+      }
 }

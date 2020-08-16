@@ -28,9 +28,7 @@ struct NewsCellViewModel : CellsViewModelProtocol {
             self.imageURL = URL(string: "www.google.com")!
             return
         }
-        
          imageURL = url
-       
     }
     
     init(news:News , isFavotite:Bool) {

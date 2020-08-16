@@ -11,7 +11,7 @@ import SafariServices
 
 class NewsListViewModel : BaseViewModel {
     
-    let favoriteViewModel = FavoriteViewModel()
+    var favoriteViewModel:FavoriteViewModel?
     
     var hasMoreItems:Bool?
     
@@ -94,21 +94,13 @@ class NewsListViewModel : BaseViewModel {
     
     
     private func checkNewsIsExist(news:News) -> Bool {
-        return favoriteViewModel.checkIsNewExist(news: news)
+        return (favoriteViewModel?.checkIsNewExist(news: news))!
     }
-//
-//    func didPressedOnAddFavoriteButton(at indexPath:IndexPath) {
-//        objectToAddInRealm.value = news.value?[indexPath.row]
-//    }
-//
-//    func didPressedOnARemovwFavoriteButton(at indexPath:IndexPath) {
-//        objectToRemoveFromRealm.value = news.value?[indexPath.row]
-//    }
-    
+
     
     
     func toggleFavortie(for news : News) {
-        favoriteViewModel.toggleNewsFromFavourite(newsObject: news)
+        favoriteViewModel?.toggleNewsFromFavourite(newsObject: news)
         reloadTableWhenBackFromFavScreen()
     }
     

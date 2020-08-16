@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 class BaseViewController: UIViewController {
+    
     func setubObservers(viewModel:BaseViewModel){
-        
         viewModel.observState?.subscribe({ state in
             switch state {
             case .loading:
@@ -30,9 +30,7 @@ class BaseViewController: UIViewController {
             }
         })
     }
-    
     func reloadTableView(){}
-    
     
     // on click on cell using observer
       func showSafariWebViewPage(url:String){

@@ -30,6 +30,8 @@ class NewsListViewModel : BaseViewModel {
     var objectToRemoveFromRealm = Observable<News?>(nil)
     var selectedSourceID = Observable<String?>(nil)
     
+    let semaphore = DispatchSemaphore(value: 1)
+    
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
             
@@ -41,12 +43,15 @@ class NewsListViewModel : BaseViewModel {
     
     override func initFetchVM() {
         
-        let requestQueue = DispatchQueue(label: "test.concurrent", qos: .utility , attributes: .concurrent)
+        let newsQueue = DispatchQueue(label: "NewsSerialQueue")
+        let sourceQueue = DispatchQueue(label: "SourceSerialQueue")
+      
         
-        requestQueue.async {
-            
+        
+        
+        newsQueue.async{
             print("Start First Thread")
-             self.observState?.value = .loading
+            self.observState?.value = .loading
             self.apiProtocol?.topheadlines(country: "eg", category: "sports" , pageSize: 20 , page: 0) { (result, error) in
                 if let e = error {
                     print("error is .... \(e.localizedDescription)")
@@ -56,26 +61,22 @@ class NewsListViewModel : BaseViewModel {
                 self.news.value = result?.articles
                 self.createCellsViewModels(items:  (result?.articles)!)
                 self.observState?.value = .populated
-                 print("End First Thread")
+                self.semaphore.signal()
+                print("End First Thread")
             }
+            
+            
         }
-        requestQueue.async {
-             print(" Start Second Thread")
+        
+        sourceQueue.async{
+            self.semaphore.wait()
+            print(" Start Second Thread")
             self.apiProtocol?.getResources(complitionHandler: { (source, error) in
                 self.sourcesObservable.value = source?.sources
                 print("End Second Thread")
             })
-            
         }
         
-        
-        
-        
-        
-        
-        
-        
-            
         
     }
     

@@ -30,8 +30,6 @@ class NewsListViewModel : BaseViewModel {
     var objectToRemoveFromRealm = Observable<News?>(nil)
     var selectedSourceID = Observable<String?>(nil)
     
-    let semaphore = DispatchSemaphore(value: 1)
-    
     private var cellViewModel = [NewsCellViewModel]() {
         didSet{
             
@@ -43,14 +41,14 @@ class NewsListViewModel : BaseViewModel {
     
     override func initFetchVM() {
         
-        let newsQueue = DispatchQueue(label: "NewsSerialQueue")
-        let sourceQueue = DispatchQueue(label: "SourceSerialQueue")
-      
+        let queue = DispatchQueue(label: "Serial queue")
+        let group = DispatchGroup()
         
         
         
-        newsQueue.async{
+        queue.async(group: group){
             print("Start First Thread")
+            group.enter()
             self.observState?.value = .loading
             self.apiProtocol?.topheadlines(country: "eg", category: "sports" , pageSize: 20 , page: 0) { (result, error) in
                 if let e = error {
@@ -61,21 +59,21 @@ class NewsListViewModel : BaseViewModel {
                 self.news.value = result?.articles
                 self.createCellsViewModels(items:  (result?.articles)!)
                 self.observState?.value = .populated
-                self.semaphore.signal()
+               // sleep(5)
+                group.leave()
                 print("End First Thread")
             }
-            
-            
         }
         
-        sourceQueue.async{
-            self.semaphore.wait()
-            print(" Start Second Thread")
+        group.notify(queue: .main) {
+            print("Start Second Thread")
             self.apiProtocol?.getResources(complitionHandler: { (source, error) in
                 self.sourcesObservable.value = source?.sources
                 print("End Second Thread")
             })
+            
         }
+        
         
         
     }

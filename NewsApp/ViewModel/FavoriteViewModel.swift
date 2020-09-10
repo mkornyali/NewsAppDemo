@@ -9,10 +9,15 @@
 import Foundation
 
 class FavoriteViewModel : BaseViewModel{
-    let dbManager: DataManager
+    var dbManager: DataManager
     let newsRepo: NewsRepositoryProtocol
     var news = Observable<[News]?> (nil)
+    
+    
+    
     var selectedIndex = Observable<News?>(nil)
+    
+    
     private var cellViewModel = [NewsCellViewModel]() {
            didSet{
                observState?.value = .reloading
@@ -31,7 +36,9 @@ class FavoriteViewModel : BaseViewModel{
     func toggleNewsFromFavourite(newsObject : News) {
         
         if checkIsNewExist(news: newsObject) { newsRepo.deleteNews(new: newsObject)}
-        else { newsRepo.saveNew(new: newsObject) }
+        else {
+            newsRepo.saveNew(new: newsObject)
+        }
         getAllNews()
     }
     
@@ -70,7 +77,9 @@ class FavoriteViewModel : BaseViewModel{
             if newsChecker && !checkInListAlready {
                 self.cellViewModel.append(NewsCellViewModel(news: n, isFavotite: newsChecker))
             }
-            self.observState?.value = .populated           }
+            self.observState?.value = .populated
+            
+        }
        }
     override func userPressedCell(at indexpath:IndexPath) {
         print("NewsListViewModel")

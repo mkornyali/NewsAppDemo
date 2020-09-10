@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(sourceViewModel.numberOfCells)
-        return sourceViewModel.numberOfCells
+        print(sourceViewModel?.numberOfCells)
+        return sourceViewModel?.numberOfCells ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewsCell.cellID)", for: indexPath ) as! NewsCell
-        let cellVM = sourceViewModel.getCellViewModel(at: indexPath)
+        let cellVM = sourceViewModel?.getCellViewModel(at: indexPath)
         cell.favoriteDelegate = self
         cell.indexPath = indexPath
         cell.newsCellViewModel = cellVM as? NewsCellViewModel
@@ -24,7 +24,7 @@ extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sourceViewModel.userPressedCell(at:indexPath)
+        sourceViewModel?.userPressedCell(at:indexPath)
         
     }
     
@@ -48,8 +48,8 @@ extension NewsSourceViewController : UITableViewDelegate , UITableViewDataSource
        
        func toggleFavotire(cell: NewsCell) {
            guard let index = cell.indexPath else { return }
-           if let newsObj = sourceViewModel.getNews(form: index){
-               sourceViewModel.toggleFavortie(for: newsObj)
+        if let newsObj = sourceViewModel?.getNews(form: index){
+            sourceViewModel?.toggleFavortie(for: newsObj)
            }
        }
        

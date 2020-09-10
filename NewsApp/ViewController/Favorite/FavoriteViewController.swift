@@ -11,23 +11,33 @@ import Swinject
 
 class FavoriteViewController: BaseViewController {
     
-    let container = Container()
+    var mainCoordinator:MainCoordinator?
+    
+    //let container = Container()
     @IBOutlet weak var favoritesTableView: UITableView!
-    var favoritViewModel:FavoriteViewModel?
+    
+    
+    lazy var favoritViewModel:FavoriteViewModel! = {
+        let viewModel = FavoriteViewModel(dbManager: RealmDataManager())
+        return viewModel
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        injectViewModel()
-        favoritViewModel = container.resolve(ViewModelProtocol.self, name: "\(FavoriteViewModel.self)") as? FavoriteViewModel
+        //injectViewModel()
+//        favoritViewModel = container.resolve(ViewModelProtocol.self, name: "\(FavoriteViewModel.self)") as? FavoriteViewModel
+        
+        
         setupTableView()
         setubObservers(viewModel: favoritViewModel!)
         setupOnclickCellListner()
     }
     
-    func injectViewModel() {
-        container.register(ViewModelProtocol.self, name: "\(FavoriteViewModel.self)") { _ in
-           FavoriteViewModel()
-        }
-    }
+//    func injectViewModel() {
+//        container.register(ViewModelProtocol.self, name: "\(FavoriteViewModel.self)") { _ in
+//           FavoriteViewModel()
+//        }
+//    }
     
     func setupOnclickCellListner() {
         favoritViewModel?.selectedIndex.subscribe {[unowned self] (news) in

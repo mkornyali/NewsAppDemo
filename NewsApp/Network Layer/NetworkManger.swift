@@ -8,13 +8,17 @@
 
 import Foundation
 import Moya
-protocol Networkable {
+
+
+//sourcery: AutoMockable
+protocol Networkable  {
      func fetchData <T:Codable> (target:NewsAPI , complitionHandler:@escaping (T? , APIError?) -> ())
    
 }
 
 
-class NewtorkManger:Networkable {
+class NewtorkManger:Networkable  {
+    
  
     fileprivate let provider = MoyaProvider<NewsAPI>()
     func fetchData <T:Codable> (target:NewsAPI , complitionHandler: @escaping (_ result : T? , _ error : APIError?) -> ()) {

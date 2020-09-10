@@ -21,10 +21,10 @@ extension NewsViewController {
 //            })
 //        }
         if textField.text != "" {
-            self.newsViewModel?.searchEveryThing(query: textField.text ?? "", sortBy: SortByEnum.publishedAt.rawValue)
+            self.newsViewModel.searchEveryThing(query: textField.text ?? "", sortBy: SortByEnum.publishedAt.rawValue)
         }
         else {
-            newsViewModel?.initFetchVM()
+            newsViewModel.initFetchVM()
         }
 //                else {
 //                newsViewModel.initFetchVM()

@@ -10,13 +10,10 @@ target 'NewsApp' do
   target 'NewsAppTests' do
     inherit! :search_paths
     # Pods for testing
+
   end
 
-  target 'NewsAppUITests' do
-    # Pods for testing
-  end
 pod 'Moya'
 pod 'Kingfisher', '~> 5.0'
 pod 'RealmSwift'
-
 end

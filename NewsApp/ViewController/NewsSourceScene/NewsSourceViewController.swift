@@ -8,21 +8,23 @@
 
 import UIKit
 
-class NewsSourceViewController: BaseViewController {
+class NewsSourceViewController: BaseViewController , Storyboarded {
     
     @IBOutlet weak var sourceNameLbl: UILabel!
     @IBOutlet weak var newsSourceTableView: UITableView!
     
+    weak var coordinator:NewsSourceCoordinator?
+    
     var sourceID:String?
     var sourceName:String?
-    var sourceViewModel = SourceFilterViewModel()
+    var sourceViewModel:SourceFilterViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setubObservers(viewModel:sourceViewModel)
+        setubObservers(viewModel:sourceViewModel!)
         if let id  = sourceID {
-            sourceViewModel.fetchSources(source: id)
+            sourceViewModel!.fetchSources(source: id)
         }
         setupAddingObjectToRealm()
         setupRemovingObjectFromRealm()
@@ -35,7 +37,7 @@ class NewsSourceViewController: BaseViewController {
     }
     
     func setupOnclickCellListner() {
-        sourceViewModel.selectedIndex.subscribe {[unowned self] (news) in
+        sourceViewModel?.selectedIndex.subscribe {[unowned self] (news) in
             if let url = news?.url {
                 self.showSafariWebViewPage(url: url)
             }
@@ -43,18 +45,18 @@ class NewsSourceViewController: BaseViewController {
     }
    
     func setupAddingObjectToRealm(){
-           sourceViewModel.objectToAddInRealm.subscribe { [unowned self] (news) in
+        sourceViewModel?.objectToAddInRealm.subscribe {  (news) in
                print(news?.title ?? "no title")
-               if let new = news {
+            if news != nil {
                    //self.sourceViewModel.addNews(news: new)
                }
            }
        }
        
        func setupRemovingObjectFromRealm(){
-             sourceViewModel.objectToRemoveFromRealm.subscribe {[unowned self] (news) in
+        sourceViewModel?.objectToRemoveFromRealm.subscribe { (news) in
                  print(news?.title ?? "no title")
-                 if let new = news {
+            if news != nil {
                    //self.sourceViewModel.deleteNews(news: new)
                  }
              }

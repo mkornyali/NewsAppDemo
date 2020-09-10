@@ -15,7 +15,15 @@ class SourceFilterViewModel:BaseSourceViewModel {
     var objectToAddInRealm = Observable<News?>(nil)
     var objectToRemoveFromRealm = Observable<News?>(nil)
     
-    var favoriteViewModel = FavoriteViewModel()
+    var favoriteViewModel:FavoriteViewModel?
+    
+    
+    init(favoriteViewModel:FavoriteViewModel) {
+        self.favoriteViewModel  = favoriteViewModel
+       
+    }
+    
+    
     override var numberOfCells : Int {
         return cellViewModel.count
     }
@@ -62,11 +70,11 @@ class SourceFilterViewModel:BaseSourceViewModel {
     }
     
     private func isNewsFavorit(news:News) -> Bool {
-        return favoriteViewModel.checkIsNewExist(news: news)
+        return (favoriteViewModel?.checkIsNewExist(news: news))!
     }
     
     private func checkNewsIsExist(news:News) -> Bool {
-        return favoriteViewModel.checkIsNewExist(news: news)
+        return (favoriteViewModel?.checkIsNewExist(news: news))!
     }
     
     func didPressedOnAddFavoriteButton(at indexPath:IndexPath) {
@@ -90,7 +98,7 @@ class SourceFilterViewModel:BaseSourceViewModel {
 //    }
 //    
     func toggleFavortie(for news : News) {
-          favoriteViewModel.toggleNewsFromFavourite(newsObject: news)
+        favoriteViewModel?.toggleNewsFromFavourite(newsObject: news)
         if let news = self.news.value {
                      createCellsViewModels(items: news)
                  }

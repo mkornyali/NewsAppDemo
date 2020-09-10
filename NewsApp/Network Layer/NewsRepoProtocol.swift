@@ -18,9 +18,6 @@ protocol NewsRepoProtocol {
   func topheadlines(country:String , category:String,pageSize:Int , page:Int , complitionHandler:  @escaping newsCompletionHandler)
     
     func getResources(complitionHandler:@escaping sourcesCompletionHandler )
-    
     func searchByFilterSource(source:String, ComplitionHandler:@escaping newsCompletionHandler)
-    
-    
     func searchEverything(query:String , sortBy:String , ComplitionHandler:@escaping newsCompletionHandler)
 }

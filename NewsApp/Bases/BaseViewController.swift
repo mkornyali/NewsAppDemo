@@ -11,31 +11,36 @@ import UIKit
 class BaseViewController: UIViewController {
     
     func setubObservers(viewModel:BaseViewModel){
-        viewModel.observState?.subscribe({ state in
-            switch state {
-            case .loading:
-                self.showActivityIndicator()
-            case .error:
-                print("error")
-                self.hideActivityIndicator()
-            case .empty:
-                self.hideActivityIndicator()
-            case .populated:
-                self.hideActivityIndicator()
-            case .none:
-                self.hideActivityIndicator()
-            case .reloading:
-                self.hideActivityIndicator()
-                self.reloadTableView()
-            }
-        })
+        
+        DispatchQueue.main.async {
+            viewModel.observState?.subscribe({ state in
+                switch state {
+                case .loading:
+                    self.showActivityIndicator()
+                case .error:
+                    print("error")
+                    self.hideActivityIndicator()
+                case .empty:
+                    self.hideActivityIndicator()
+                case .populated:
+                    self.hideActivityIndicator()
+                case .none:
+                    self.hideActivityIndicator()
+                case .reloading:
+                    self.hideActivityIndicator()
+                    self.reloadTableView()
+                }
+            })
+        }
+        
     }
     func reloadTableView(){}
     
     // on click on cell using observer
-      func showSafariWebViewPage(url:String){
-          let SafariVC = SafariViewController()
-          SafariVC.newsURL = url.fixedArabicURL
-          self.navigationController?.pushViewController(SafariVC, animated: true)
-      }
+    func showSafariWebViewPage(url:String){
+        let SafariVC = SafariViewController()
+        SafariVC.newsURL = url.fixedArabicURL
+        self.navigationController?.pushViewController(SafariVC, animated: true)
+        
+    }
 }

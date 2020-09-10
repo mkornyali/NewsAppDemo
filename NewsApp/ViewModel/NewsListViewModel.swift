@@ -12,10 +12,15 @@ import SafariServices
 class NewsListViewModel : BaseViewModel {
     
     var favoriteViewModel:FavoriteViewModel?
+    convenience init(favoriteViewModel:FavoriteViewModel = FavoriteViewModel()) {
+        self.init()
+        self.favoriteViewModel = favoriteViewModel
+    }
     
     var hasMoreItems:Bool?
     
     var news = Observable<[News]?> (nil)
+    var sourcesObservable = Observable<[SourceElement]?>(nil)
     var page = 0
     override var numberOfCells : Int {
         return cellViewModel.count
@@ -35,20 +40,43 @@ class NewsListViewModel : BaseViewModel {
     
     
     override func initFetchVM() {
-        observState?.value = .loading
         
-        apiProtocol?.topheadlines(country: "eg", category: "sports" , pageSize: 20 , page: 0) { (result, error) in
-            if let e = error {
-                print("error is .... \(e.localizedDescription)")
-                self.observState?.value = .error(error: e.localizedDescription)
-                return
+        let requestQueue = DispatchQueue(label: "test.concurrent", qos: .utility , attributes: .concurrent)
+        
+        requestQueue.async {
+            
+            print("Start First Thread")
+             self.observState?.value = .loading
+            self.apiProtocol?.topheadlines(country: "eg", category: "sports" , pageSize: 20 , page: 0) { (result, error) in
+                if let e = error {
+                    print("error is .... \(e.localizedDescription)")
+                    self.observState?.value = .error(error: e.localizedDescription)
+                    return
+                }
+                self.news.value = result?.articles
+                self.createCellsViewModels(items:  (result?.articles)!)
+                self.observState?.value = .populated
+                 print("End First Thread")
             }
-            self.news.value = result?.articles
-            print("number of articles inside initVM NewsListVM is \(result?.articles?.count ?? 0)")
-            //FIXME: (5) we can make this class in parent and override it here or when needed
-            self.createCellsViewModels(items:  (result?.articles)!)
-            self.observState?.value = .populated
         }
+        requestQueue.async {
+             print(" Start Second Thread")
+            self.apiProtocol?.getResources(complitionHandler: { (source, error) in
+                self.sourcesObservable.value = source?.sources
+                print("End Second Thread")
+            })
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+            
+        
     }
     
     override func getCellViewModel(at indexPath: IndexPath) -> CellsViewModelProtocol? {
@@ -96,7 +124,7 @@ class NewsListViewModel : BaseViewModel {
     private func checkNewsIsExist(news:News) -> Bool {
         return (favoriteViewModel?.checkIsNewExist(news: news))!
     }
-
+    
     
     
     func toggleFavortie(for news : News) {

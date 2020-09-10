@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XRj-HK-NPb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -161,10 +161,25 @@
             </objects>
             <point key="canvasLocation" x="2839.130434782609" y="142.63392857142856"/>
         </scene>
+        <!--Safari View Controller-->
+        <scene sceneID="gyl-dS-oGK">
+            <objects>
+                <viewController storyboardIdentifier="SafariViewController" id="nhZ-lL-wdi" customClass="SafariViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YEN-r3-QSZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="905-Mk-qq2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nds-m5-p4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-683" y="115"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="3G6-Rh-vDA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XRj-HK-NPb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="XRj-HK-NPb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="60q-Ss-HcS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -179,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="128.57142857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tabbar View Controller-->
         <scene sceneID="DZt-DS-HNC">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wFl-M2-CnP" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabbarViewController" automaticallyAdjustsScrollViewInsets="NO" id="wFl-M2-CnP" customClass="MainTabbarViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6YO-8R-Hwc"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SRS-gT-VUY">

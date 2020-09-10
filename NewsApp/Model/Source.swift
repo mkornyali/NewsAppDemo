@@ -28,6 +28,7 @@ struct SourceElement: Codable {
         case url, category, language, country
     }
 }
+//extension SourceElement : Sequence {}
 
 enum Category: String, Codable {
     case business = "business"

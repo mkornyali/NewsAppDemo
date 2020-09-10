@@ -8,13 +8,15 @@
 
 import Foundation
 
-class NewsRepo : NewsRepoProtocol {
+public class NewsRepo : NewsRepoProtocol {
     var network: Networkable?
     
-    
-//    let network = NewtorkManger()
-    
-    
+//    init(network:Networkable) {
+//        self.network = network
+//    }
+//    init() {
+//        super.init()
+//    }
     
     func searchEverything(query: String, sortBy: String, ComplitionHandler: @escaping (Result?, APIError?) -> ()) {
         network?.fetchData(target: .searchEverything(query: query, sortBy: sortBy), complitionHandler: ComplitionHandler )
@@ -41,9 +43,10 @@ class NewsRepo : NewsRepoProtocol {
     func getResources(complitionHandler: @escaping sourcesCompletionHandler) {
         network?.fetchData(target: .sources, complitionHandler: complitionHandler)
     }
-    
-    
-    
-    
-    
+       
 }
+
+
+
+
+
